@@ -2,15 +2,19 @@
 // FlexiPay × Yuno — Dashboard interactivity
 // =========================================================
 
+// Monochrome palette aligned with YUNO brand: navy + blue accent + grays.
 const CHART_COLORS = {
-  accent: '#ff5c3a',
-  blue: '#60a5fa',
-  purple: '#a78bfa',
-  green: '#4ade80',
-  yellow: '#fbbf24',
-  red: '#f87171',
-  grid: 'rgba(255,255,255,0.05)',
-  text: '#9aa0b4',
+  navy: '#282A30',
+  navy2: '#4B5563',
+  navy3: '#6B7280',
+  navy4: '#9CA3AF',
+  navy5: '#D1D5DB',
+  blue: '#0066CC',
+  blueSoft: 'rgba(0, 102, 204, 0.15)',
+  danger: '#9B2C2C',
+  grid: 'rgba(40, 42, 48, 0.08)',
+  text: '#6B7280',
+  textStrong: '#282A30',
 };
 
 Chart.defaults.color = CHART_COLORS.text;
@@ -53,10 +57,10 @@ function initCharts() {
     data: {
       labels: months,
       datasets: [
-        {label: 'Mexico', data: tpv.map(t => t.MX), backgroundColor: CHART_COLORS.accent, stack: 'a'},
-        {label: 'Colombia', data: tpv.map(t => t.CO), backgroundColor: CHART_COLORS.blue, stack: 'a'},
-        {label: 'Chile', data: tpv.map(t => t.CL), backgroundColor: CHART_COLORS.purple, stack: 'a'},
-        {label: 'Peru', data: tpv.map(t => t.PE), backgroundColor: CHART_COLORS.green, stack: 'a'},
+        {label: 'Mexico',   data: tpv.map(t => t.MX), backgroundColor: CHART_COLORS.navy,  stack: 'a'},
+        {label: 'Colombia', data: tpv.map(t => t.CO), backgroundColor: CHART_COLORS.navy2, stack: 'a'},
+        {label: 'Chile',    data: tpv.map(t => t.CL), backgroundColor: CHART_COLORS.navy3, stack: 'a'},
+        {label: 'Peru',     data: tpv.map(t => t.PE), backgroundColor: CHART_COLORS.navy4, stack: 'a'},
       ],
     },
     options: {
@@ -93,13 +97,13 @@ function initCharts() {
       datasets: [{
         label: 'Monthly Yuno revenue',
         data: tpv.map(t => t.yuno_rev),
-        borderColor: CHART_COLORS.accent,
-        backgroundColor: 'rgba(255, 92, 58, 0.1)',
+        borderColor: CHART_COLORS.blue,
+        backgroundColor: CHART_COLORS.blueSoft,
         fill: true,
         tension: 0.35,
         pointRadius: 4,
-        pointBackgroundColor: CHART_COLORS.accent,
-        pointBorderColor: '#0a0b0f',
+        pointBackgroundColor: CHART_COLORS.blue,
+        pointBorderColor: '#FFFFFF',
         pointBorderWidth: 2,
         borderWidth: 2.5,
       }]
@@ -133,12 +137,12 @@ function initCharts() {
         {
           label: 'Current',
           data: gap.map(g => g.current),
-          backgroundColor: gap.map(g => g.gap < -5 ? CHART_COLORS.red : g.gap < -2 ? CHART_COLORS.yellow : CHART_COLORS.green),
+          backgroundColor: gap.map(g => g.gap < -5 ? CHART_COLORS.danger : g.gap < -2 ? CHART_COLORS.navy2 : CHART_COLORS.navy4),
           borderRadius: 6,
         },
         {
           label: 'Benchmark (80%)',
-          data: gap.map(g => 80),
+          data: gap.map(() => 80),
           type: 'line',
           borderColor: CHART_COLORS.blue,
           borderDash: [5, 5],
@@ -182,7 +186,7 @@ function initCharts() {
       datasets: [{
         label: 'Monthly TPV unlock',
         data: gap.map(g => g.monthly_unlock),
-        backgroundColor: CHART_COLORS.accent,
+        backgroundColor: CHART_COLORS.blue,
         borderRadius: 6,
       }]
     },
@@ -236,13 +240,13 @@ function initExpansionCharts() {
       datasets: [{
         label: 'Brazil TPV',
         data: brLinear(scen.br_m1, scen.br_m3, scen.br_m6),
-        borderColor: CHART_COLORS.green,
-        backgroundColor: 'rgba(74, 222, 128, 0.12)',
+        borderColor: CHART_COLORS.navy,
+        backgroundColor: 'rgba(40, 42, 48, 0.08)',
         fill: true,
         tension: 0.3,
         pointRadius: 5,
-        pointBackgroundColor: CHART_COLORS.green,
-        pointBorderColor: '#0a0b0f',
+        pointBackgroundColor: CHART_COLORS.navy,
+        pointBorderColor: '#FFFFFF',
         pointBorderWidth: 2,
         borderWidth: 2.5,
       }]
@@ -273,12 +277,12 @@ function initExpansionCharts() {
         label: 'Argentina TPV',
         data: brLinear(scen.ar_m1, scen.ar_m3, scen.ar_m6),
         borderColor: CHART_COLORS.blue,
-        backgroundColor: 'rgba(96, 165, 250, 0.12)',
+        backgroundColor: CHART_COLORS.blueSoft,
         fill: true,
         tension: 0.3,
         pointRadius: 5,
         pointBackgroundColor: CHART_COLORS.blue,
-        pointBorderColor: '#0a0b0f',
+        pointBorderColor: '#FFFFFF',
         pointBorderWidth: 2,
         borderWidth: 2.5,
       }]
@@ -310,13 +314,13 @@ function initExpansionCharts() {
         {
           label: 'Yuno Year 1 incremental revenue',
           data: s.map(sc => sc.yuno_y1_total),
-          backgroundColor: CHART_COLORS.accent,
+          backgroundColor: CHART_COLORS.navy,
           borderRadius: 6,
         },
         {
           label: 'FlexiPay Year 1 net upside',
           data: s.map(sc => sc.flexipay_y1_total),
-          backgroundColor: CHART_COLORS.purple,
+          backgroundColor: CHART_COLORS.blue,
           borderRadius: 6,
         },
       ]
@@ -392,10 +396,10 @@ function initWaterfallChart() {
     -c.switching_costs[4].amount,
     c.headline_savings - c.total_switching,
   ];
-  const colors = values.map((v, i) => {
-    if (i === 0) return CHART_COLORS.green;
-    if (i === labels.length - 1) return CHART_COLORS.red;
-    return CHART_COLORS.yellow;
+  const colors = values.map((_, i) => {
+    if (i === 0) return CHART_COLORS.blue;             // savings (positive) — brand blue
+    if (i === labels.length - 1) return CHART_COLORS.danger;  // net result — dark red
+    return CHART_COLORS.navy2;                          // switching cost components — neutral navy
   });
 
   new Chart(document.getElementById('waterfallChart'), {
@@ -508,5 +512,5 @@ function renderPlanB(idx) {
 
 loadModel().catch(err => {
   console.error('Model load failed', err);
-  document.body.innerHTML = '<div style="padding:40px;color:#f87171">Failed to load model.json — make sure you opened via http://, not file://</div>';
+  document.body.innerHTML = '<div style="padding:40px;color:#9B2C2C;font-family:Inter,system-ui">Failed to load model.json — make sure you opened via http://, not file://</div>';
 });
