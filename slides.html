@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200, user-scalable=yes">
+<title>FlexiPay × Yuno — Presentation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #ff5c3a;
+    --accent-bright: #ff8164;
+    --bg: #0a0b0f;
+    --card: #161923;
+    --dim: #9aa0b4;
+  }
+  .reveal {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 28px;
+    color: #e6e8ef;
+    background: var(--bg);
+  }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    color: #fff;
+  }
+  .reveal h1 { font-size: 68px; line-height: 1.05; }
+  .reveal h2 { font-size: 48px; line-height: 1.1; margin-bottom: 24px; }
+  .reveal h3 { font-size: 36px; line-height: 1.15; margin-bottom: 20px; }
+  .reveal h4 { font-size: 24px; }
+  .reveal .eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .reveal .accent { color: var(--accent); }
+  .reveal .dim { color: var(--dim); font-size: 22px; }
+  .reveal .big-number {
+    font-size: 140px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .reveal .kpi-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .reveal .kpi {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 8px;
+    flex: 1;
+  }
+  .reveal .kpi-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+  .reveal .kpi-value { font-size: 36px; font-weight: 800; }
+  .reveal .bullet-list { list-style: none; padding: 0; margin: 0; }
+  .reveal .bullet-list li {
+    padding: 18px 0 18px 48px;
+    position: relative;
+    border-bottom: 1px solid #232735;
+    font-size: 24px;
+    line-height: 1.45;
+  }
+  .reveal .bullet-list li:last-child { border-bottom: none; }
+  .reveal .bullet-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 28px;
+    width: 24px; height: 2px;
+    background: var(--accent);
+  }
+  .reveal table {
+    width: 100%;
+    font-size: 20px;
+    border-collapse: collapse;
+  }
+  .reveal table th {
+    text-align: left;
+    color: var(--dim);
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 2px solid var(--accent);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .reveal table td {
+    padding: 14px;
+    border-bottom: 1px solid #232735;
+  }
+  .reveal .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .reveal .tag-danger {
+    background: rgba(248, 113, 113, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+  }
+  .reveal .tag-ai {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+  }
+  .reveal .progress {
+    color: var(--accent);
+  }
+  .reveal .controls {
+    color: var(--accent);
+  }
+  .reveal .footer {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-size: 12px;
+    color: var(--dim);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .reveal .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .reveal .hl {
+    background: rgba(255, 92, 58, 0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #ff8164;
+  }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================ -->
+<!-- SLIDE 1 — TITLE -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">KAM Challenge · Account Strategy Package</div>
+  <h1>FlexiPay <span class="accent">×</span> Yuno</h1>
+  <p class="dim" style="font-size: 28px; margin-top: 32px;">
+    3 fires. 2 hours. 1 renewal decision.
+  </p>
+  <div style="margin-top: 60px; font-size: 16px; color: var(--dim);">
+    Nicolas · KAM, FlexiPay Account · April 15, 2026
+  </div>
+  <div class="footer">FlexiPay × Yuno · QBR + Retention + Expansion</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2 — TRIAGE -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">Opening</div>
+  <h2>Three fires. One narrative.</h2>
+  <ul class="bullet-list">
+    <li><strong>QBR tomorrow</strong> — Carlos the skeptic, Daniela the champion, Sofia the tiebreaker.</li>
+    <li><strong>Renewal in 45 days</strong> — dLocal counter-proposal at 0.67% cards + free Brazil.</li>
+    <li><strong>Brazil &amp; Argentina expansion</strong> — Series B just closed, Q1 launch window.</li>
+  </ul>
+  <p class="dim" style="margin-top: 40px;">
+    Retention is the binding constraint. Everything else is a sub-problem of it.
+  </p>
+  <div class="footer">Triage</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3 — THE KILLER NUMBER -->
+<!-- ============================================================ -->
+<section>
+  <div class="tag tag-danger">The killer number</div>
+  <h2>dLocal saves FlexiPay <span style="text-decoration: line-through; color: var(--dim);">$427K</span>.<br>Then destroys <span class="accent">$707K</span>.</h2>
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Headline savings</div>
+      <div class="kpi-value">+$427,920</div>
+    </div>
+    <div class="kpi" style="border-left-color: #f87171;">
+      <div class="kpi-label">Total switching cost Y1</div>
+      <div class="kpi-value" style="color: #f87171;">−$1,135,620</div>
+    </div>
+    <div class="kpi" style="border-left-color: #f87171;">
+      <div class="kpi-label">Net Year 1 impact</div>
+      <div class="kpi-value" style="color: #f87171;">−$707,700</div>
+    </div>
+  </div>
+  <p class="dim" style="margin-top: 40px;">
+    Once re-integration, Brazil delay, approval drop, token churn, and commitment overage are priced.
+  </p>
+  <div class="footer">Killer number</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4 — ACCOUNT HEALTH (SECTION 1) -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§1 · Account Health</div>
+  <h3>The story in one sentence</h3>
+  <p style="font-size: 28px; line-height: 1.4; max-width: 900px;">
+    FlexiPay grew TPV <span class="hl">+69% in five months</span> on Yuno, but is leaving
+    <span class="hl">~$6.1M/year of approved TPV</span> on the table because Peru and Colombia are
+    running below LatAm benchmark — and <span class="hl">Brazil is the lever</span> that turns that
+    gap into a moat.
+  </p>
+  <div class="kpi-row" style="margin-top: 48px;">
+    <div class="kpi">
+      <div class="kpi-label">Current ARR</div>
+      <div class="kpi-value">$2.06M</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">6-mo TPV growth</div>
+      <div class="kpi-value">+54%</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Jan dip</div>
+      <div class="kpi-value">−8.4%</div>
+    </div>
+  </div>
+  <p class="dim" style="margin-top: 24px;">
+    January dip is <strong>seasonal</strong>: proportional across markets, support tickets flat, trailing growth intact.
+  </p>
+  <div class="footer">Section 1 · Health</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5 — THREE STRATEGIC INSIGHTS -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§1 · Three insights for FlexiPay leadership</div>
+  <ul class="bullet-list">
+    <li>
+      <strong>You're not paying for Yuno. You're paying for a routing brain.</strong><br>
+      <span class="dim" style="font-size: 18px;">Every 1pt of blended approval = $124K/year. Yuno routing delivers 2-3pt over single-acquirer baseline.</span>
+    </li>
+    <li>
+      <strong>Brazil is not a cost question. It's a speed question.</strong><br>
+      <span class="dim" style="font-size: 18px;">Yuno BR live in 3 weeks (zero new integration). dLocal: 6-8 weeks + 160 FlexiPay eng hours.</span>
+    </li>
+    <li>
+      <strong>Your engineering constraint is the real story.</strong><br>
+      <span class="dim" style="font-size: 18px;">4 devs, 12 open roles. dLocal migration burns 1,280 hours of opportunity cost — the same hours that should ship Brazil.</span>
+    </li>
+  </ul>
+  <div class="footer">Section 1 · Insights</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6 — EXPANSION MODEL (SECTION 2) -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§2 · Growth — Brazil + Argentina</div>
+  <h3>Three scenarios · Same model · Consistent across sections</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>BR M6 TPV</th>
+        <th>AR M6 TPV</th>
+        <th>Yuno Y1 Rev</th>
+        <th>FlexiPay Y1 Upside</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Conservative</td>
+        <td>$6.0M/mo</td>
+        <td>$1.5M/mo</td>
+        <td>$554,970</td>
+        <td>~$716K</td>
+      </tr>
+      <tr style="background: rgba(255, 92, 58, 0.08);">
+        <td><strong>Base</strong></td>
+        <td><strong>$11.0M/mo</strong></td>
+        <td><strong>$2.5M/mo</strong></td>
+        <td><strong class="accent">$951,500</strong></td>
+        <td><strong class="accent">~$1.24M</strong></td>
+      </tr>
+      <tr>
+        <td>Aggressive</td>
+        <td>$18.0M/mo</td>
+        <td>$4.0M/mo</td>
+        <td>$1,518,708</td>
+        <td>~$2.05M</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 36px; font-size: 24px;">
+    <strong>Base case: Yuno account grows $2.06M → $3.01M ARR (+46%) in Year 1.</strong>
+  </p>
+  <div class="footer">Section 2 · Expansion</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7 — dLOCAL POINT BY POINT (SECTION 3) -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§3 · dLocal competitive response</div>
+  <h3>Point-by-point counter</h3>
+  <table style="font-size: 18px;">
+    <thead>
+      <tr>
+        <th>dLocal claim</th>
+        <th>Yuno response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0.67% cards (18 bps cheaper)</td>
+        <td>Real savings $427K, not $370K. Destroyed by $1.13M switching cost.</td>
+      </tr>
+      <tr>
+        <td>Free BR integration (20h)</td>
+        <td>Yuno: zero new integration, live in <strong>3 weeks</strong> vs 6-8.</td>
+      </tr>
+      <tr>
+        <td>PIX at 0.50%</td>
+        <td>Match on 24-mo BR commit. Concession: $36K/yr (paid by expansion).</td>
+      </tr>
+      <tr>
+        <td>24-mo / $25M min TPV</td>
+        <td>FlexiPay at $20.7M. Shortfall = <strong>$345K/yr exposure</strong>. It's a trap.</td>
+      </tr>
+      <tr>
+        <td>$0 platform fee</td>
+        <td>Waive it. $24K/yr. Removes CFO's line item.</td>
+      </tr>
+      <tr>
+        <td>Named AM + weekly Slack</td>
+        <td>Already offered. Live by end of week — fixing our service debt.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer">Section 3 · Competitive</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8 — 30-DAY ACTION PLAN -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§3 · 30-day action plan</div>
+  <h3>How we win the renewal</h3>
+  <table>
+    <thead>
+      <tr><th>Week</th><th>Milestone</th><th>Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong class="accent">W1</strong></td><td>QBR + VP pricing approval + Slack channel live</td><td>Nicolas + VP</td></tr>
+      <tr><td><strong class="accent">W2</strong></td><td>BR fast-track plan · Yuno CEO → Sofia call · Written counter to Carlos</td><td>SE + Nicolas</td></tr>
+      <tr><td><strong class="accent">W3</strong></td><td>Approval-rate sprint: CO routing · PE 3rd acquirer · MX/CL tuning</td><td>Solutions Eng</td></tr>
+      <tr><td><strong class="accent">W4</strong></td><td>Performance SLA drafted · Win-room · LOI target</td><td>Nicolas + Legal</td></tr>
+    </tbody>
+  </table>
+  <p class="dim" style="margin-top: 32px;">
+    Renewal signed by Week 6 — ahead of the 45-day deadline.
+  </p>
+  <div class="footer">Section 3 · Action plan</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9 — INTERNAL MEMO (SECTION 4) -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">§4 · Internal memo — asks to VP</div>
+  <h3>$75K protects $2.06M and unlocks $951K</h3>
+  <table style="font-size: 18px;">
+    <thead>
+      <tr><th>Ask</th><th>Cost</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Waive platform fee</td><td>$24K/yr</td><td>Removes CFO's line item</td></tr>
+      <tr><td>Match PIX 0.50% (24-mo BR commit)</td><td>$36K/yr</td><td>Pays for itself 20×</td></tr>
+      <tr><td><strong>Hold cards at 0.85% + SLA</strong></td><td><strong>$0</strong></td><td><strong>The SLA is the story</strong></td></tr>
+      <tr><td>18-mo term, no TPV minimum</td><td>—</td><td>Counters dLocal trap</td></tr>
+      <tr><td>40h SE + 20h CSM BR fast-track</td><td>~$15K</td><td>Unlocks $951K expansion</td></tr>
+      <tr><td>Yuno CEO → Sofia call</td><td>1h</td><td>Tiebreaker conversation</td></tr>
+      <tr><td>Performance SLA authorization</td><td>$50K max</td><td>Biggest differentiator</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 32px; font-size: 24px;">
+    <strong>Renewal ROI: 20:1 if we win.</strong> Risk: <strong style="color: #f87171;">HIGH.</strong>
+  </p>
+  <div class="footer">Section 4 · Internal memo</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 — AI TOOLS -->
+<!-- ============================================================ -->
+<section>
+  <div class="tag tag-ai">AI-assisted decision support</div>
+  <h2>Where AI actually helps a KAM</h2>
+  <div class="two-col" style="margin-top: 40px;">
+    <div>
+      <h4 style="color: #a78bfa;">Module 1 — QBR Script Generator</h4>
+      <p class="dim">
+        Pick a stakeholder (Carlos / Daniela / Sofia) → tailored opening, 3 bullets,
+        and a close adapted to their tone and priorities. Drawn from the stakeholder profiles
+        and the same financial model.
+      </p>
+    </div>
+    <div>
+      <h4 style="color: #a78bfa;">Module 2 — Plan B Generator</h4>
+      <p class="dim">
+        Pick a failure mode (Carlos rejects, approval sprint fails, dLocal drops price,
+        Daniela leaves, full churn) → probability, AI analysis, structured response plan,
+        post-plan win probability.
+      </p>
+    </div>
+  </div>
+  <p style="margin-top: 48px; font-size: 20px;">
+    Pre-computed from the same model. Deterministic, offline, reviewable.
+    <br>
+    <span class="dim">The real AI work happened upstream: financial modeling, stress-testing, narrative drafting.</span>
+  </p>
+  <p style="margin-top: 32px;">
+    <a href="index.html#ai" style="color: var(--accent); text-decoration: none; border-bottom: 2px solid var(--accent);">
+      → See live modules on the dashboard
+    </a>
+  </p>
+  <div class="footer">AI · Decision support</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11 — CLOSING -->
+<!-- ============================================================ -->
+<section>
+  <div class="eyebrow">Close</div>
+  <h2>The question is not<br>whether to fight.</h2>
+  <h2 class="accent">It's how fast.</h2>
+  <div class="kpi-row" style="margin-top: 60px;">
+    <div class="kpi">
+      <div class="kpi-label">Renewal window</div>
+      <div class="kpi-value">45 days</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">VP decisions needed</div>
+      <div class="kpi-value">72 hours</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Brazil go-live</div>
+      <div class="kpi-value">3 weeks</div>
+    </div>
+  </div>
+  <p style="margin-top: 48px; font-size: 20px; color: var(--dim);">
+    Thank you. Questions?
+    <br>
+    <a href="index.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid;">
+      → Open dashboard
+    </a>
+  </p>
+  <div class="footer">Thank you</div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    controls: true,
+    progress: true,
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    width: 1280,
+    height: 800,
+    margin: 0.08,
+  });
+</script>
+
+</body>
+</html>

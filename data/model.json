@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "generated": "2026-04-15",
+    "prepared_by": "Nicolas \u2014 KAM, FlexiPay Account",
+    "account": "FlexiPay",
+    "renewal_days": 45
+  },
+  "tpv_history": [
+    {
+      "month": "Aug 2024",
+      "MX": 8.2,
+      "CO": 3.1,
+      "CL": 1.4,
+      "PE": 0.7,
+      "total": 13.4,
+      "yuno_rev": 110800
+    },
+    {
+      "month": "Sep 2024",
+      "MX": 9.1,
+      "CO": 3.4,
+      "CL": 1.5,
+      "PE": 0.8,
+      "total": 14.8,
+      "yuno_rev": 123075
+    },
+    {
+      "month": "Oct 2024",
+      "MX": 10.3,
+      "CO": 3.8,
+      "CL": 1.7,
+      "PE": 0.9,
+      "total": 16.7,
+      "yuno_rev": 137605
+    },
+    {
+      "month": "Nov 2024",
+      "MX": 11.8,
+      "CO": 4.2,
+      "CL": 1.9,
+      "PE": 1.0,
+      "total": 18.9,
+      "yuno_rev": 156645
+    },
+    {
+      "month": "Dec 2024",
+      "MX": 14.1,
+      "CO": 5.0,
+      "CL": 2.3,
+      "PE": 1.2,
+      "total": 22.6,
+      "yuno_rev": 186940
+    },
+    {
+      "month": "Jan 2025",
+      "MX": 12.9,
+      "CO": 4.6,
+      "CL": 2.1,
+      "PE": 1.1,
+      "total": 20.7,
+      "yuno_rev": 171600
+    }
+  ],
+  "approval_gap": [
+    {
+      "market": "Mexico",
+      "current": 79.3,
+      "benchmark": 80.0,
+      "gap": -0.7,
+      "monthly_card_tpv": 11.6,
+      "monthly_unlock": 0.1
+    },
+    {
+      "market": "Colombia",
+      "current": 75.7,
+      "benchmark": 80.0,
+      "gap": -4.3,
+      "monthly_card_tpv": 4.2,
+      "monthly_unlock": 0.24
+    },
+    {
+      "market": "Chile",
+      "current": 77.3,
+      "benchmark": 80.0,
+      "gap": -2.7,
+      "monthly_card_tpv": 1.9,
+      "monthly_unlock": 0.07
+    },
+    {
+      "market": "Peru",
+      "current": 72.7,
+      "benchmark": 80.0,
+      "gap": -7.3,
+      "monthly_card_tpv": 1.0,
+      "monthly_unlock": 0.1
+    }
+  ],
+  "expansion": {
+    "scenarios": [
+      {
+        "name": "Conservative",
+        "br_m1": 1.5,
+        "br_m3": 3.5,
+        "br_m6": 6.0,
+        "ar_m1": 0.3,
+        "ar_m3": 0.8,
+        "ar_m6": 1.5,
+        "pix_share": 40,
+        "yuno_y1_br": 430700,
+        "yuno_y1_ar": 124270,
+        "yuno_y1_total": 554970,
+        "flexipay_y1_br": 570968,
+        "flexipay_y1_ar": 145000,
+        "flexipay_y1_total": 715968,
+        "m6_monthly_rev": 56700
+      },
+      {
+        "name": "Base",
+        "br_m1": 2.5,
+        "br_m3": 6.0,
+        "br_m6": 11.0,
+        "ar_m1": 0.5,
+        "ar_m3": 1.2,
+        "ar_m6": 2.5,
+        "pix_share": 50,
+        "yuno_y1_br": 747250,
+        "yuno_y1_ar": 204250,
+        "yuno_y1_total": 951500,
+        "flexipay_y1_br": 990020,
+        "flexipay_y1_ar": 250000,
+        "flexipay_y1_total": 1240020,
+        "m6_monthly_rev": 98500
+      },
+      {
+        "name": "Aggressive",
+        "br_m1": 4.0,
+        "br_m3": 9.5,
+        "br_m6": 18.0,
+        "ar_m1": 0.8,
+        "ar_m3": 2.0,
+        "ar_m6": 4.0,
+        "pix_share": 55,
+        "yuno_y1_br": 1190188,
+        "yuno_y1_ar": 328520,
+        "yuno_y1_total": 1518708,
+        "flexipay_y1_br": 1639415,
+        "flexipay_y1_ar": 410000,
+        "flexipay_y1_total": 2049415,
+        "m6_monthly_rev": 157700
+      }
+    ]
+  },
+  "competitive": {
+    "yuno_annual": 2087400,
+    "dlocal_annual": 1659480,
+    "headline_savings": 427920,
+    "cfo_quoted": 370000,
+    "switching_costs": [
+      {
+        "item": "Re-integration engineering",
+        "amount": 24000,
+        "note": "160 hrs \u00d7 $150/hr direct"
+      },
+      {
+        "item": "Brazil launch delay (2 mo, Base)",
+        "amount": 337500,
+        "note": "$6.75M lost TPV \u00d7 5% margin"
+      },
+      {
+        "item": "Approval rate risk (2pt drop)",
+        "amount": 248400,
+        "note": "Single-acquirer regression"
+      },
+      {
+        "item": "Tokenization migration churn",
+        "amount": 180000,
+        "note": "20% token loss \u00d7 3 months"
+      },
+      {
+        "item": "dLocal commitment overage",
+        "amount": 345720,
+        "note": "$4.3M/mo shortfall \u00d7 0.67% \u00d7 12"
+      }
+    ],
+    "total_switching": 1135620,
+    "net_destruction": 707700
+  },
+  "concessions": [
+    {
+      "ask": "Waive platform fee",
+      "cost_yuno": 24000,
+      "type": "annual"
+    },
+    {
+      "ask": "Match PIX at 0.50% (24-mo BR commit)",
+      "cost_yuno": 36000,
+      "type": "annual forgone"
+    },
+    {
+      "ask": "Hold card take rate at 0.85% (+ SLA)",
+      "cost_yuno": 0,
+      "type": "hold"
+    },
+    {
+      "ask": "18-month term, no hard TPV min",
+      "cost_yuno": 0,
+      "type": "flexibility"
+    },
+    {
+      "ask": "40h SE + 20h CSM BR fast-track",
+      "cost_yuno": 15000,
+      "type": "one-time"
+    },
+    {
+      "ask": "Yuno CEO \u2192 Sofia executive call",
+      "cost_yuno": 0,
+      "type": "time"
+    },
+    {
+      "ask": "Performance SLA (approval-rate floor)",
+      "cost_yuno": 50000,
+      "type": "max exposure"
+    }
+  ],
+  "total_concessions": 75000,
+  "metrics": {
+    "current_arr": 2059200,
+    "base_next_year_arr": 3010700,
+    "one_pt_approval_value": 124200,
+    "annual_approval_upside": 305000,
+    "six_month_growth": 54
+  },
+  "plan_b_scenarios": [
+    {
+      "id": "carlos-rejects",
+      "trigger": "Carlos rejects all pricing concessions",
+      "probability": "30%",
+      "ai_analysis": "This is the highest-probability failure mode. Carlos was hired 6 months ago with an explicit cost-reduction mandate from the board post-Series A. His rejection will not be about price \u2014 it will be a signal that his credibility at FlexiPay depends on visible cost wins. The counter must give him a win without ceding the strategic frame.",
+      "response_plan": [
+        "Escalate to Yuno CEO \u2192 Sofia Alvarez within 48 hours. Frame as strategic partnership, not vendor negotiation.",
+        "Offer Carlos a 'CFO Dashboard' with monthly performance SLA reporting \u2014 gives him visible accountability vs dLocal's opacity.",
+        "Introduce a tiered pricing structure: 0.85% on first $15M/mo, 0.78% on TPV above \u2014 ties Yuno's discount to growth Carlos wants anyway.",
+        "Deliver a written risk memo to FlexiPay's board (with Sofia's permission) on dLocal commitment trap and tokenization migration risk."
+      ],
+      "estimated_win_probability": "55%"
+    },
+    {
+      "id": "approval-sprint-fails",
+      "trigger": "90-day approval-rate sprint misses targets in Peru",
+      "probability": "25%",
+      "ai_analysis": "Peru is structurally hard: 2 acquirers, small issuer base, limited routing optionality. If we miss PE targets, the SLA exposes Yuno financially AND gives dLocal a 'told you so' narrative. The key is to set PE targets conservatively upfront AND have a contingency acquirer integration ready.",
+      "response_plan": [
+        "Pre-negotiate a 3rd Peru acquirer integration (Niubiz or Izipay) ready to deploy within 30 days of first SLA miss.",
+        "Structure the SLA with market-specific floors: MX 82%, CO 80%, CL 80%, PE 75% \u2014 not a single blended number.",
+        "Add a 'rolling 90-day' measurement window to avoid single-month noise triggering SLA credits.",
+        "Set aside $50K reserve for PE-specific acquirer onboarding fees in the Q2 budget."
+      ],
+      "estimated_win_probability": "70%"
+    },
+    {
+      "id": "dlocal-drops-price",
+      "trigger": "dLocal drops card take rate to 0.60% or lower",
+      "probability": "15%",
+      "ai_analysis": "This is the 'race to the bottom' scenario. If dLocal drops to 0.60%, they are buying the account at a loss \u2014 which tells you everything about how strategically they see FlexiPay. Do NOT match. Matching resets Yuno's entire LatAm pricing floor for every other customer. Instead, compete on structural differentiation.",
+      "response_plan": [
+        "Do NOT drop below 0.80% on cards. This is a hard floor \u2014 message from VP to sales team.",
+        "Shift the narrative entirely to performance-based commercial terms: 'pay for outcomes, not volume'.",
+        "Introduce a success-fee structure: 0.85% base + rebate of 5 bps per percentage point of approval rate improvement above a 82% floor. Aligns incentives, quantifies the value.",
+        "Expose dLocal's unit economics publicly: if they're selling at 0.60%, they're losing money on FlexiPay, which means service quality will erode within 12 months. Get this into Daniela's hands as internal intel."
+      ],
+      "estimated_win_probability": "65%"
+    },
+    {
+      "id": "flexipay-delays",
+      "trigger": "FlexiPay delays renewal decision past 45-day window",
+      "probability": "20%",
+      "ai_analysis": "Counter-intuitively, this helps us. Yuno's contract auto-renews unless 60-day notice is given. If FlexiPay misses the window, we get another year by default. The risk is they give notice as a negotiation tactic \u2014 so we need to frame urgency without creating a hostile countdown.",
+      "response_plan": [
+        "Quietly confirm internally with Daniela that the 60-day notice window has passed (if current date > T-60 days from March 15 renewal).",
+        "Do NOT mention the auto-renew clause proactively \u2014 it removes their incentive to close.",
+        "Schedule a 'Brazil readiness review' for day 30 that forces a commitment decision (they can't launch BR without vendor certainty).",
+        "Prepare to offer a 60-day grace period on renewal signing IF they commit to Brazil fast-track \u2014 decouples the two decisions."
+      ],
+      "estimated_win_probability": "80%"
+    },
+    {
+      "id": "daniela-leaves",
+      "trigger": "Daniela (champion) leaves FlexiPay mid-negotiation",
+      "probability": "10%",
+      "ai_analysis": "Low probability but catastrophic. Daniela is the only stakeholder actively defending Yuno. If she leaves, her replacement may be hired BY Carlos with a cost mandate. We need to broaden the champion network now, not reactively.",
+      "response_plan": [
+        "Immediately identify 2nd-tier champions within FlexiPay engineering: the 4 backend devs. They feel the support quality directly.",
+        "Schedule a 'Yuno Engineering Open House' \u2014 Yuno Solutions Eng + FlexiPay devs, no KAM present. Builds ground-level relationships.",
+        "Document every deliverable in writing with Daniela CC'd, so a successor has evidence of Yuno value without Daniela's verbal endorsement.",
+        "If Daniela leaves, extend her a Yuno advisor role offer within 48 hours \u2014 preserves relationship + signals to market."
+      ],
+      "estimated_win_probability": "40%"
+    },
+    {
+      "id": "full-churn",
+      "trigger": "FlexiPay signs with dLocal \u2014 account lost",
+      "probability": "15%",
+      "ai_analysis": "The ultimate failure mode. If it happens, the goal shifts from retention to maximum strategic value extraction: preserve relationship, turn the loss into pipeline intelligence, and create a win-back path.",
+      "response_plan": [
+        "Offer a 6-month 'safety net' clause: 30-day pre-approved path back to Yuno at original pricing if dLocal underperforms. Creates a credible win-back trigger.",
+        "Turn FlexiPay's 18-month track record into a public case study (with their permission) \u2014 fuels the 20+ BNPL prospects in LatAm pipeline.",
+        "Extract detailed post-mortem data from Daniela on WHY they switched \u2014 use it to harden the next 5 renewals across the portfolio.",
+        "Schedule quarterly check-ins with Daniela personally \u2014 she came from Mercado Pago, she'll move again. This is a 5-year relationship, not an 18-month one.",
+        "If FlexiPay's BR launch is delayed because of the switch, Yuno uses it publicly (carefully) as evidence that orchestration speed matters. Turn their mistake into pipeline."
+      ],
+      "estimated_win_probability": "N/A \u2014 damage control mode"
+    }
+  ],
+  "qbr_scripts": [
+    {
+      "stakeholder": "Carlos Mendoza",
+      "role": "CFO \u2014 The Skeptic",
+      "tone": "Bottom-line first. Zero fluff. Spreadsheets and numbers.",
+      "opening_hook": "Carlos, before anything else \u2014 the dLocal savings number is actually $427,920, not $370K. I want you to have the right number on the table.",
+      "three_bullets": [
+        "dLocal's $427K headline savings destroy $707K of FlexiPay value in Year 1 once you price in 160 eng hours, 2-month Brazil delay, 2-point approval drop, token migration, and the $4.3M/mo commitment shortfall you're exposed to on their 24-month term.",
+        "Your current Yuno spend is 0.83% of TPV \u2014 that's the median of the LatAm orchestration market, not the top. The real benchmarking question isn't 'is 0.85% expensive', it's 'what does 0.67% buy you?' \u2014 and the answer is: a single-acquirer setup in a market where your Peru routing is already the weakest link.",
+        "Here's what I'm authorized to give you: platform fee waived ($24K/yr), PIX matched to 0.50% on a 24-month commit, performance SLA with approval-rate floors, and 18-month term with no hard TPV minimum. Total concession value: ~$75K. Your line-item wins, your Brazil ships on time, and you don't inherit dLocal's commitment trap. Sign it, and Q1 goes home quiet."
+      ],
+      "close": "I can have this in writing by end of day tomorrow. What do you need from me to green-light it?"
+    },
+    {
+      "stakeholder": "Daniela Ramos",
+      "role": "Head of Payments \u2014 The Champion",
+      "tone": "Data-driven, technical, hates fluff. Show your work.",
+      "opening_hook": "Daniela, I built the case you asked me for. Here's the one-line version: the switching math doesn't work for FlexiPay at any price, and I can back every number.",
+      "three_bullets": [
+        "Your January TPV dip is seasonal \u2014 proportional across all 4 markets, support tickets flat, 54% 6-month trailing growth intact. Don't let Carlos read the dip as a platform problem. It's not.",
+        "Your real performance issue is Peru and Colombia routing \u2014 you're 4.3 points under benchmark in CO and 7.3 under in PE. That's $6.1M/yr of FlexiPay GMV being declined at checkout and $305K of net revenue you're leaving on the table. I'm committing to a 90-day sprint to close those gaps, with market-specific SLAs backing it.",
+        "Brazil goes live in 3 weeks on Yuno vs 6-8 weeks on dLocal. Your 4-dev team doesn't have 1,280 engineering hours to spend re-integrating. Switching costs you the Brazil launch Sofia promised the board \u2014 and switching cost itself is $1.13M Year 1 vs $427K headline savings. I need you co-presenting this with me to Carlos."
+      ],
+      "close": "Will you co-sign the narrative in tomorrow's QBR? I'll hand you the deck. You hand Carlos the math."
+    },
+    {
+      "stakeholder": "Sofia Alvarez",
+      "role": "CEO \u2014 The Visionary",
+      "tone": "Big picture. Competitive positioning. How does this help us win?",
+      "opening_hook": "Sofia, this decision isn't about payments. It's about whether FlexiPay ships Brazil in Q1 or not.",
+      "three_bullets": [
+        "You said 2025 is your Brazil year and first-mover advantage matters. Yuno already supports PIX, Boleto, and local Brazilian acquiring on your existing integration \u2014 3 weeks to live. dLocal needs a full re-integration: 6-8 weeks, minimum. That's 2 months of first-mover advantage you cannot get back. Your competitors ship while you're re-plumbing.",
+        "Under our Base case, Brazil + Argentina generate $1.24M of net FlexiPay revenue in Year 1 \u2014 2.9\u00d7 the dLocal headline savings. The decision isn't 'save $427K on a line item'. It's 'capture $1.24M of new market or don't'. I have the model in front of me.",
+        "Yuno is asking for an executive call with you directly \u2014 our CEO to you, in the next 14 days. This is positioned as a strategic partnership for FlexiPay's Series B expansion, not a vendor renewal. Your Head of Payments trusts us, your CFO has a cost lens, and you break ties. We want you to break them with the Brazil lens, not the line-item lens."
+      ],
+      "close": "Can we put the executive call on the calendar this week?"
+    }
+  ]
+}
