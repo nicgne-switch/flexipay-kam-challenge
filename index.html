@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FlexiPay × Yuno — Account Strategy Dashboard</title>
+<title>FlexiPay × Yuno — Account Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -11,33 +11,59 @@
 </head>
 <body>
 
+<!-- ============================================================ -->
+<!-- TOP NAV — persistent, tab-based -->
+<!-- ============================================================ -->
 <header class="site-header">
-  <div class="container">
-    <div class="header-top">
-      <div>
-        <div class="eyebrow">KAM Challenge · Account Strategy Package</div>
-        <h1>FlexiPay <span class="accent">×</span> Yuno</h1>
-        <div class="subtitle">3 fires. 2 hours. 1 renewal. · April 15, 2026</div>
-      </div>
-      <nav class="header-nav">
-        <a href="#overview">Overview</a>
-        <a href="#qbr">QBR</a>
-        <a href="#expansion">Expansion</a>
-        <a href="#retention">Retention</a>
-        <a href="#memo">Internal Memo</a>
-        <a href="#ai">AI Tools</a>
-        <a href="slides.html" class="cta">Open Slides →</a>
-      </nav>
+  <div class="container header-top">
+    <div class="brand">
+      <div class="brand-mark">FlexiPay<span class="dot">×</span>Yuno</div>
+      <div class="brand-sub">Account Strategy · KAM Challenge</div>
     </div>
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn" data-tab="overview" role="tab">
+        <span class="tab-num">01</span>
+        <span class="tab-label">Overview</span>
+      </button>
+      <button class="tab-btn" data-tab="qbr" role="tab">
+        <span class="tab-num">02</span>
+        <span class="tab-label">QBR</span>
+      </button>
+      <button class="tab-btn" data-tab="expansion" role="tab">
+        <span class="tab-num">03</span>
+        <span class="tab-label">Expansion</span>
+      </button>
+      <button class="tab-btn" data-tab="retention" role="tab">
+        <span class="tab-num">04</span>
+        <span class="tab-label">Retention</span>
+      </button>
+      <button class="tab-btn" data-tab="memo" role="tab">
+        <span class="tab-num">05</span>
+        <span class="tab-label">Internal Memo</span>
+      </button>
+      <button class="tab-btn war" data-tab="warroom" role="tab">
+        <span class="tab-num">06</span>
+        <span class="tab-label">War Room</span>
+      </button>
+    </nav>
+    <a href="slides.html" class="slides-cta">Slides →</a>
   </div>
 </header>
 
-<section class="hero">
-  <div class="container">
+<main class="view-container">
+
+<!-- ============================================================ -->
+<!-- VIEW 1 — OVERVIEW -->
+<!-- ============================================================ -->
+<section class="view" id="view-overview" data-view="overview">
+  <div class="view-inner">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="tag tag-danger">RENEWAL IN 45 DAYS</div>
-        <h2>dLocal saves FlexiPay <span class="strike">$427K</span>.<br>Then destroys <span class="accent">$707K</span>.</h2>
+        <div class="tag tag-danger">Renewal in 45 days</div>
+        <h1 class="hero-title">
+          dLocal saves FlexiPay <span class="strike">$427K</span>.<br>
+          Then destroys <span class="accent">$707K</span>.
+        </h1>
         <p class="lede">
           Once you price in re-integration, Brazil delay, approval-rate regression,
           tokenization churn, and dLocal's $25M/mo commitment trap — the headline
@@ -45,8 +71,8 @@
           Yuno revenue</strong> FlexiPay unlocks in Brazil and Argentina under the base case.
         </p>
         <div class="hero-ctas">
-          <a href="#retention" class="btn btn-primary">See the switching-cost math</a>
-          <a href="#ai" class="btn btn-ghost">Explore AI-powered tools</a>
+          <button class="btn btn-primary" data-nav="qbr">Start with the QBR →</button>
+          <button class="btn btn-ghost" data-nav="warroom">Open War Room</button>
         </div>
       </div>
       <div class="hero-kpis">
@@ -68,123 +94,143 @@
         <div class="kpi">
           <div class="kpi-label">Approval gap upside</div>
           <div class="kpi-value">$305K</div>
-          <div class="kpi-sub">Annual, at zero cost</div>
+          <div class="kpi-sub">Annual, zero cost</div>
         </div>
       </div>
     </div>
+
+    <div class="overview-summary">
+      <div class="summary-card">
+        <div class="summary-num">01</div>
+        <h4>QBR Narrative</h4>
+        <p>+69% TPV growth in 5 months. Three strategic insights for Daniela, Carlos, and Sofia. The January dip is seasonal, not structural.</p>
+        <button class="card-link" data-nav="qbr">View QBR →</button>
+      </div>
+      <div class="summary-card">
+        <div class="summary-num">02</div>
+        <h4>Expansion Model</h4>
+        <p>Brazil + Argentina across 3 scenarios. Base case: $951K Yuno revenue and $1.24M FlexiPay upside in Year 1.</p>
+        <button class="card-link" data-nav="expansion">View model →</button>
+      </div>
+      <div class="summary-card">
+        <div class="summary-num">03</div>
+        <h4>dLocal Response</h4>
+        <p>Point-by-point counter. $1.13M switching cost waterfall. 30-day action plan with owners.</p>
+        <button class="card-link" data-nav="retention">View response →</button>
+      </div>
+      <div class="summary-card">
+        <div class="summary-num">04</div>
+        <h4>Internal Memo</h4>
+        <p>$75K of concessions to protect $2.06M ARR and unlock $951K expansion. Decisions needed from VP in 72 hours.</p>
+        <button class="card-link" data-nav="memo">View memo →</button>
+      </div>
+      <div class="summary-card highlight">
+        <div class="summary-num">06</div>
+        <h4>War Room</h4>
+        <p>Live decision support for the QBR meeting. 15 objection responses, Plan B simulator, executive scripts, concession calculator.</p>
+        <button class="card-link" data-nav="warroom">Enter War Room →</button>
+      </div>
+    </div>
   </div>
 </section>
 
-<main class="container">
-
 <!-- ============================================================ -->
-<!-- SECTION 1 — QBR NARRATIVE -->
+<!-- VIEW 2 — QBR -->
 <!-- ============================================================ -->
-<section id="overview" class="block">
-  <div class="section-head">
-    <div class="section-number">§1</div>
-    <div>
-      <h3>Account Health &amp; QBR Narrative</h3>
-      <div class="section-sub">What I'd present to Daniela, Carlos, and Sofia tomorrow.</div>
+<section class="view" id="view-qbr" data-view="qbr">
+  <div class="view-inner">
+    <div class="view-head">
+      <div class="view-eyebrow">§1 · Account Health</div>
+      <h2>Quarterly Business Review</h2>
+      <p class="view-lede">What I'd present to Daniela, Carlos, and Sofia tomorrow.</p>
     </div>
-  </div>
 
-  <div class="callout">
-    <strong>The story in one sentence:</strong>
-    FlexiPay grew TPV <strong>+69% in five months</strong> on Yuno, but is leaving
-    <strong>~$6.1M/year</strong> of approved-transaction TPV on the table because three
-    markets are underperforming LatAm benchmarks — and Brazil is now the lever that
-    turns that gap into a moat.
-  </div>
+    <div class="callout">
+      <strong>The story in one sentence:</strong>
+      FlexiPay grew TPV <strong>+69% in five months</strong> on Yuno, but is leaving
+      <strong>~$6.1M/year</strong> of approved-transaction TPV on the table because three
+      markets are underperforming LatAm benchmarks — and Brazil is now the lever that
+      turns that gap into a moat.
+    </div>
 
-  <div class="chart-grid">
-    <div class="card">
-      <div class="card-head">
-        <h4>TPV Trajectory</h4>
-        <div class="card-sub">Monthly TPV in $M · Jan dip is seasonal, not structural</div>
+    <div class="chart-grid">
+      <div class="card">
+        <div class="card-head">
+          <h4>TPV Trajectory</h4>
+          <div class="card-sub">Monthly TPV in $M · Jan dip is seasonal, not structural</div>
+        </div>
+        <canvas id="tpvChart"></canvas>
       </div>
-      <canvas id="tpvChart"></canvas>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <h4>Yuno Revenue Growth</h4>
-        <div class="card-sub">Monthly revenue to Yuno from FlexiPay account</div>
+      <div class="card">
+        <div class="card-head">
+          <h4>Yuno Revenue Growth</h4>
+          <div class="card-sub">Monthly revenue to Yuno from FlexiPay</div>
+        </div>
+        <canvas id="revChart"></canvas>
       </div>
-      <canvas id="revChart"></canvas>
     </div>
-  </div>
 
-  <div class="chart-grid">
-    <div class="card">
-      <div class="card-head">
-        <h4>Approval Rate Gap vs LatAm Benchmark</h4>
-        <div class="card-sub">Blended card approval (credit 2× weight, debit 1×)</div>
+    <div class="chart-grid">
+      <div class="card">
+        <div class="card-head">
+          <h4>Approval Rate Gap vs Benchmark</h4>
+          <div class="card-sub">Blended card approval · red flags Peru at −7.3pt</div>
+        </div>
+        <canvas id="approvalChart"></canvas>
       </div>
-      <canvas id="approvalChart"></canvas>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <h4>Monthly TPV Unlock at 80% Benchmark</h4>
-        <div class="card-sub">Additional successful card TPV if each market hits benchmark</div>
+      <div class="card">
+        <div class="card-head">
+          <h4>Monthly TPV Unlock at Benchmark</h4>
+          <div class="card-sub">Additional successful card TPV if each market hit 80%</div>
+        </div>
+        <canvas id="unlockChart"></canvas>
       </div>
-      <canvas id="unlockChart"></canvas>
     </div>
-  </div>
 
-  <h4 class="insights-head">Three strategic insights</h4>
-  <div class="insights">
-    <div class="insight">
-      <div class="insight-num">01</div>
-      <h5>You're not paying for Yuno. You're paying for a routing brain.</h5>
-      <p>
-        Every 1 point of blended approval = <strong>$124K/year</strong> of FlexiPay net revenue.
-        Yuno's multi-acquirer routing has delivered 2–3 points of lift vs single-acquirer baseline
-        over 18 months — that's $248K–$372K/year of value. dLocal's single-acquirer architecture
-        in Peru alone puts this at risk.
-      </p>
-    </div>
-    <div class="insight">
-      <div class="insight-num">02</div>
-      <h5>Brazil is not a cost question. It's a speed question.</h5>
-      <p>
-        Yuno already supports PIX, Boleto, and BR local acquiring — <strong>0 weeks of new integration</strong>.
+    <h4 class="section-title">Three strategic insights</h4>
+    <div class="insights">
+      <div class="insight">
+        <div class="insight-num">01</div>
+        <h5>You're not paying for Yuno. You're paying for a routing brain.</h5>
+        <p>Every 1 point of blended approval = <strong>$124K/year</strong> of FlexiPay net revenue.
+        Yuno's multi-acquirer routing delivers 2–3 points of lift over single-acquirer baselines
+        over 18 months. That's $248K–$372K/year of value dLocal's architecture can't reproduce.</p>
+      </div>
+      <div class="insight">
+        <div class="insight-num">02</div>
+        <h5>Brazil is not a cost question. It's a speed question.</h5>
+        <p>Yuno already supports PIX, Boleto, and BR local acquiring — <strong>0 weeks of new integration</strong>.
         dLocal requires full re-integration: <strong>6–8 weeks of your 4-dev team</strong>.
-        Every week of delay is $2.5M of deferred TPV in the Base case and permanent share loss
-        to competitors Sofia is racing against.
-      </p>
-    </div>
-    <div class="insight">
-      <div class="insight-num">03</div>
-      <h5>Your engineering constraint is the real story.</h5>
-      <p>
-        FlexiPay has 4 backend devs, 12 open roles, and Brazil on the line.
-        dLocal migration consumes <strong>~1,280 engineering hours of opportunity cost</strong>.
-        Those same hours, applied to Yuno's Brazil fast-track, generate <strong>$990K of
-        FlexiPay Year-1 upside</strong>. This is the highest-ROI decision FlexiPay will make this quarter.
-      </p>
+        Every week of delay is $2.5M of deferred TPV and permanent share loss to competitors Sofia is racing.</p>
+      </div>
+      <div class="insight">
+        <div class="insight-num">03</div>
+        <h5>Your engineering constraint is the real story.</h5>
+        <p>FlexiPay has 4 backend devs, 12 open roles, Brazil on the line.
+        dLocal migration consumes <strong>1,280 engineering hours of opportunity cost</strong>.
+        Those same hours on Yuno's Brazil fast-track generate <strong>$990K of Year-1 upside</strong>.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 2 — EXPANSION MODEL -->
+<!-- VIEW 3 — EXPANSION -->
 <!-- ============================================================ -->
-<section id="expansion" class="block">
-  <div class="section-head">
-    <div class="section-number">§2</div>
-    <div>
-      <h3>Brazil + Argentina Expansion Model</h3>
-      <div class="section-sub">Three scenarios. Explicit assumptions. Consistent numbers.</div>
+<section class="view" id="view-expansion" data-view="expansion">
+  <div class="view-inner">
+    <div class="view-head">
+      <div class="view-eyebrow">§2 · Growth Strategy</div>
+      <h2>Brazil + Argentina Expansion Model</h2>
+      <p class="view-lede">Three scenarios · Explicit assumptions · Consistent across the whole package.</p>
     </div>
-  </div>
 
-  <div class="scenario-tabs">
-    <button class="scenario-tab" data-scenario="0">Conservative</button>
-    <button class="scenario-tab active" data-scenario="1">Base</button>
-    <button class="scenario-tab" data-scenario="2">Aggressive</button>
-  </div>
+    <div class="scenario-tabs">
+      <button class="scenario-tab" data-scenario="0">Conservative</button>
+      <button class="scenario-tab active" data-scenario="1">Base</button>
+      <button class="scenario-tab" data-scenario="2">Aggressive</button>
+    </div>
 
-  <div class="scenario-content">
     <div class="chart-grid">
       <div class="card">
         <div class="card-head">
@@ -202,7 +248,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card big">
       <div class="card-head">
         <h4>Year 1 Revenue Impact — Both Sides of the Deal</h4>
         <div class="card-sub">Yuno incremental revenue and FlexiPay net upside across all 3 scenarios</div>
@@ -212,7 +258,7 @@
 
     <div class="scenario-metrics">
       <div class="metric-card">
-        <div class="metric-label">Yuno Y1 incremental revenue</div>
+        <div class="metric-label">Yuno Y1 incremental rev</div>
         <div class="metric-value accent" id="yunoY1">$951,500</div>
         <div class="metric-sub">BR + AR combined</div>
       </div>
@@ -222,241 +268,370 @@
         <div class="metric-sub">vs cross-border baseline</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">M6 monthly run-rate (Yuno)</div>
+        <div class="metric-label">M6 monthly run-rate</div>
         <div class="metric-value" id="m6Rev">$98,500</div>
-        <div class="metric-sub">Steady state</div>
+        <div class="metric-sub">Steady state (Yuno)</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Multiple on dLocal savings</div>
         <div class="metric-value" id="multiple">2.9×</div>
-        <div class="metric-sub">FlexiPay upside ÷ $427K</div>
+        <div class="metric-sub">FlexiPay upside / $427K</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 3 — RETENTION / COMPETITIVE RESPONSE -->
+<!-- VIEW 4 — RETENTION -->
 <!-- ============================================================ -->
-<section id="retention" class="block">
-  <div class="section-head">
-    <div class="section-number">§3</div>
-    <div>
-      <h3>Retention &amp; Competitive Response</h3>
-      <div class="section-sub">dLocal, point by point — with numbers.</div>
+<section class="view" id="view-retention" data-view="retention">
+  <div class="view-inner">
+    <div class="view-head">
+      <div class="view-eyebrow">§3 · Competitive Response</div>
+      <h2>dLocal, Point by Point</h2>
+      <p class="view-lede">Switching costs quantified. 30-day action plan. Every claim backed by numbers.</p>
     </div>
-  </div>
 
-  <div class="card big">
-    <div class="card-head">
-      <h4>Switching Cost Waterfall</h4>
-      <div class="card-sub">dLocal's $427K headline savings vs. real Year-1 cost of switching</div>
+    <div class="card big">
+      <div class="card-head">
+        <h4>Switching Cost Waterfall</h4>
+        <div class="card-sub">dLocal's $427K headline vs. real Year-1 cost of switching</div>
+      </div>
+      <canvas id="waterfallChart"></canvas>
+      <div class="waterfall-verdict">
+        <div class="verdict-item">
+          <div class="verdict-label">Headline savings</div>
+          <div class="verdict-value positive">+$427,920</div>
+        </div>
+        <div class="verdict-item">
+          <div class="verdict-label">Total switching cost</div>
+          <div class="verdict-value negative">−$1,135,620</div>
+        </div>
+        <div class="verdict-item big">
+          <div class="verdict-label">Net Year 1 impact</div>
+          <div class="verdict-value negative">−$707,700</div>
+        </div>
+      </div>
     </div>
-    <canvas id="waterfallChart"></canvas>
-    <div class="waterfall-verdict">
-      <div class="verdict-item">
-        <div class="verdict-label">Headline savings</div>
-        <div class="verdict-value positive">+$427,920</div>
-      </div>
-      <div class="verdict-item">
-        <div class="verdict-label">Total switching cost</div>
-        <div class="verdict-value negative">−$1,135,620</div>
-      </div>
-      <div class="verdict-item big">
-        <div class="verdict-label">Net Year 1 impact</div>
-        <div class="verdict-value negative">−$707,700</div>
-      </div>
-    </div>
-  </div>
 
-  <h4 class="insights-head">Point-by-point response to dLocal</h4>
-  <div class="objections">
-    <div class="objection">
-      <div class="obj-head">❖ "0.67% on cards = $370K savings"</div>
-      <div class="obj-body">
-        <strong>Correction:</strong> Actual savings at Jan volumes = $427,920. CFO's number is
-        understated. Headline evaporates before Month 3 once you price in the $1.13M of switching costs below.
+    <h4 class="section-title">Point-by-point response to dLocal</h4>
+    <div class="objections-grid">
+      <div class="obj-row">
+        <div class="obj-head">❖ "0.67% on cards = $370K savings"</div>
+        <div class="obj-body">
+          <strong>Correction:</strong> Actual savings at Jan volumes = $427,920. Headline evaporates
+          before Month 3 once you price in $1.13M of switching costs.
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj-head">❖ "Free Brazil integration — 20 hrs engineering"</div>
+        <div class="obj-body">
+          20 hours is dLocal's effort, not FlexiPay's savings. FlexiPay still burns 120–160 hours on
+          re-integration. <strong>Yuno counter: zero new integration, BR live in 3 weeks.</strong>
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj-head">❖ "PIX at 0.50% take rate"</div>
+        <div class="obj-body">
+          dLocal's 0.50% excludes FX markup, chargeback protection, dispute handling.
+          <strong>Yuno match: 0.50% PIX on 24-mo BR commit.</strong> Concession cost: $36K/yr. Paid for by expansion.
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj-head">❖ "24-month term, $25M/mo minimum"</div>
+        <div class="obj-body">
+          FlexiPay Jan TPV = $20.7M. Shortfall × 0.67% × 12 = <strong>$345K/yr of commitment overage</strong>.
+          Yuno counter: 18-month term, no hard minimum.
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj-head">❖ "Named AM, bi-weekly check-ins, Slack"</div>
+        <div class="obj-body">
+          Feature Yuno already offers. FlexiPay has requested this 5 times — a service failure we're fixing.
+          <strong>Dedicated Slack + weekly syncs + named CSM live by end of week.</strong>
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj-head">❖ "$0 platform fee"</div>
+        <div class="obj-body">
+          $24K/yr = 1.2% of annual spend. <strong>Yuno waives platform fee entirely.</strong>
+          Disarms the CFO's line-item objection for a rounding error.
+        </div>
       </div>
     </div>
-    <div class="objection">
-      <div class="obj-head">❖ "Free Brazil integration — 20 hrs engineering"</div>
-      <div class="obj-body">
-        20 hours is dLocal's effort, not FlexiPay's savings. FlexiPay still burns 120–160 hours on re-integration.
-        Yuno counter: <strong>zero new integration — BR goes live in 3 weeks vs 6–8 weeks on dLocal.</strong>
-      </div>
-    </div>
-    <div class="objection">
-      <div class="obj-head">❖ "PIX at 0.50% take rate"</div>
-      <div class="obj-body">
-        dLocal 0.50% excludes FX markup, chargeback protection, dispute handling (sold separately).
-        <strong>Yuno match: 0.50% PIX on 24-mo BR commit.</strong> Concession cost: $36K/yr. Trade paid for by expansion revenue.
-      </div>
-    </div>
-    <div class="objection">
-      <div class="obj-head">❖ "24-month term, $25M/mo minimum"</div>
-      <div class="obj-body">
-        FlexiPay Jan TPV = $20.7M. Shortfall = $4.3M/mo × 0.67% × 12 = <strong>$345K/year of commitment overage exposure</strong>.
-        Yuno counter: 18-month term, no hard minimum, pricing review only if TPV drops &gt;25% for 3 consecutive months.
-      </div>
-    </div>
-    <div class="objection">
-      <div class="obj-head">❖ "Named AM, bi-weekly check-ins, Slack"</div>
-      <div class="obj-body">
-        Feature Yuno already offers. FlexiPay has requested this 5 times — a service failure we need to fix,
-        not a dLocal advantage. <strong>Dedicated Slack + weekly syncs + named CSM stood up by end of week.</strong>
-      </div>
-    </div>
-    <div class="objection">
-      <div class="obj-head">❖ "$0 platform fee"</div>
-      <div class="obj-body">
-        $24K/yr = 1.2% of FlexiPay's annual spend. <strong>Yuno waives platform fee entirely.</strong>
-        Cost to Yuno: $24K. Value: disarms CFO's line-item objection.
-      </div>
-    </div>
-  </div>
 
-  <h4 class="insights-head">30-day action plan</h4>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-week">Week 1</div>
-      <div class="timeline-body">
-        <strong>QBR delivered</strong> · Dedicated Slack live · VP approval on pricing concessions · Daniela's written endorsement locked
+    <h4 class="section-title">30-day action plan</h4>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-week">Week 1</div>
+        <div class="timeline-body">
+          <strong>QBR delivered</strong> · Dedicated Slack live · VP pricing approval · Daniela's written endorsement locked
+        </div>
       </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-week">Week 2</div>
-      <div class="timeline-body">
-        <strong>Brazil fast-track plan</strong> delivered (3-week go-live target) · Yuno CEO → Sofia executive sponsor call · Written counter-proposal to Carlos
+      <div class="timeline-item">
+        <div class="timeline-week">Week 2</div>
+        <div class="timeline-body">
+          <strong>BR fast-track plan</strong> (3-week go-live) · Yuno CEO → Sofia executive call · Written counter to Carlos
+        </div>
       </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-week">Week 3</div>
-      <div class="timeline-body">
-        <strong>Approval-rate sprint kickoff</strong> · CO routing refresh · PE 3rd acquirer integration · MX/CL tuning · Baseline metrics locked for SLA
+      <div class="timeline-item">
+        <div class="timeline-week">Week 3</div>
+        <div class="timeline-body">
+          <strong>Approval-rate sprint kickoff</strong> · CO routing refresh · PE 3rd acquirer · MX/CL tuning · Baseline locked
+        </div>
       </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-week">Week 4</div>
-      <div class="timeline-body">
-        <strong>Win-room with FlexiPay leadership</strong> · Performance SLA language drafted · LOI target · Contract negotiation complete by Week 6
+      <div class="timeline-item">
+        <div class="timeline-week">Week 4</div>
+        <div class="timeline-body">
+          <strong>Win-room with FlexiPay leadership</strong> · Performance SLA drafted · LOI target · Negotiation by W6
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 4 — INTERNAL MEMO -->
+<!-- VIEW 5 — INTERNAL MEMO -->
 <!-- ============================================================ -->
-<section id="memo" class="block">
-  <div class="section-head">
-    <div class="section-number">§4</div>
-    <div>
-      <h3>Internal Memo to Yuno VP</h3>
-      <div class="section-sub">Honest risk, clear asks, 90-day plan with owners.</div>
-    </div>
-  </div>
-
-  <div class="memo">
-    <div class="memo-head">
-      <div><strong>TO:</strong> VP of Account Management</div>
-      <div><strong>FROM:</strong> Nicolas — KAM, FlexiPay</div>
-      <div><strong>DATE:</strong> April 15, 2026</div>
-      <div><strong>RISK LEVEL:</strong> <span class="risk-high">HIGH</span></div>
+<section class="view" id="view-memo" data-view="memo">
+  <div class="view-inner">
+    <div class="view-head">
+      <div class="view-eyebrow">§4 · Internal Memo</div>
+      <h2>To: Yuno VP of Account Management</h2>
+      <p class="view-lede">Honest risk, resource asks, 90-day plan with owners and plan B.</p>
     </div>
 
-    <h4>Resources needed — decisions by EOD tomorrow</h4>
-    <table class="asks-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Ask</th>
-          <th>Cost to Yuno</th>
-          <th>Why</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>Waive monthly platform fee ($2K/mo)</td><td>$24K/yr</td><td>Neutralizes CFO's line-item objection</td></tr>
-        <tr><td>2</td><td>Match dLocal PIX at 0.50% (24-mo BR commit)</td><td>~$36K/yr forgone</td><td>Brazil revenue still +$747K — concession pays for itself 20×</td></tr>
-        <tr><td>3</td><td>Hold card take rate at 0.85% + introduce SLA</td><td>$0</td><td>The SLA is the story. Don't drop the card rate.</td></tr>
-        <tr><td>4</td><td>18-month term, no hard TPV minimum</td><td>Flexibility cost</td><td>Counters dLocal's commitment trap</td></tr>
-        <tr><td>5</td><td>40h Solutions Eng + 20h CSM (BR fast-track)</td><td>~$15K one-time</td><td>Unlocks $951K Base-case Y1 expansion revenue</td></tr>
-        <tr><td>6</td><td>Yuno CEO → Sofia executive sponsor call</td><td>1h CEO time</td><td>Sofia breaks ties on strategic framing</td></tr>
-        <tr><td>7</td><td>Approval-rate performance SLA authorization</td><td>$50K max exposure</td><td>Single biggest differentiator vs dLocal</td></tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td></td>
-          <td><strong>Total direct give</strong></td>
-          <td><strong>~$75K/yr</strong></td>
-          <td><strong>To protect $2.06M ARR + unlock $951K</strong></td>
-        </tr>
-      </tfoot>
-    </table>
+    <div class="memo">
+      <div class="memo-head">
+        <div><strong>TO:</strong> VP of Account Management</div>
+        <div><strong>FROM:</strong> Nicolas — KAM, FlexiPay</div>
+        <div><strong>DATE:</strong> April 15, 2026</div>
+        <div><strong>RISK LEVEL:</strong> <span class="risk-high">HIGH</span></div>
+      </div>
 
-    <div class="memo-footer">
-      <p>
+      <p class="memo-lede">
+        FlexiPay's 12-month renewal is in 45 days. dLocal has submitted a 24-month counter-proposal
+        that is 18 bps cheaper on cards, waives the platform fee, and bundles "free" Brazil integration.
+        CFO Carlos Mendoza is publicly leaning toward dLocal. Champion Daniela Ramos needs ammunition.
+        The switching-cost math is overwhelming in our favor — we win if we move fast and give ground
+        on the right lines. I need decisions in 72 hours.
+      </p>
+
+      <h4>Resources needed — decisions by EOD tomorrow</h4>
+      <table class="asks-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Ask</th><th>Cost to Yuno</th><th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Waive monthly platform fee ($2K/mo)</td><td>$24K/yr</td><td>Neutralizes CFO line-item objection</td></tr>
+          <tr><td>2</td><td>Match dLocal PIX at 0.50% (24-mo BR commit)</td><td>~$36K/yr forgone</td><td>Brazil revenue still +$747K — concession pays itself 20×</td></tr>
+          <tr><td>3</td><td>Hold card take rate at 0.85% + introduce SLA</td><td>$0</td><td>The SLA is the story. Don't drop the card rate.</td></tr>
+          <tr><td>4</td><td>18-month term, no hard TPV minimum</td><td>Flexibility cost</td><td>Counters dLocal's commitment trap</td></tr>
+          <tr><td>5</td><td>40h SE + 20h CSM (BR fast-track)</td><td>~$15K one-time</td><td>Unlocks $951K Base-case Y1 expansion</td></tr>
+          <tr><td>6</td><td>Yuno CEO → Sofia executive sponsor call</td><td>1h CEO time</td><td>Sofia breaks ties on strategic framing</td></tr>
+          <tr><td>7</td><td>Approval-rate performance SLA authorization</td><td>$50K max exposure</td><td>Single biggest differentiator vs dLocal</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td><td><strong>Total direct give</strong></td><td><strong>~$75K/yr</strong></td>
+            <td><strong>Protects $2.06M ARR + unlocks $951K</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="memo-footer">
         <strong>Bottom line.</strong> $75K of concessions protect $2.06M ARR and unlock $951K of
         Base-case expansion. Renewal ROI &gt;20:1 if we win. The question is not whether to fight —
         it's whether we fight fast enough.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- VIEW 6 — WAR ROOM -->
+<!-- ============================================================ -->
+<section class="view war-view" id="view-warroom" data-view="warroom">
+  <div class="view-inner">
+    <div class="view-head war-head">
+      <div class="war-badge">LIVE DECISION SUPPORT</div>
+      <h2>War Room</h2>
+      <p class="view-lede">
+        Built for the 15 minutes before the QBR meeting, and the 60 minutes inside it.
+        Four AI-assisted modules that turn the entire strategy package into operational cue cards
+        for a KAM under pressure.
       </p>
     </div>
+
+    <div class="war-tabs" role="tablist">
+      <button class="war-tab active" data-warmod="objections">
+        <span class="war-tab-num">01</span>
+        <span class="war-tab-label">Objection Handler</span>
+        <span class="war-tab-sub">15 live responses</span>
+      </button>
+      <button class="war-tab" data-warmod="planb">
+        <span class="war-tab-num">02</span>
+        <span class="war-tab-label">Plan B Simulator</span>
+        <span class="war-tab-sub">6 failure modes</span>
+      </button>
+      <button class="war-tab" data-warmod="qbr">
+        <span class="war-tab-num">03</span>
+        <span class="war-tab-label">QBR Script Generator</span>
+        <span class="war-tab-sub">3 stakeholders</span>
+      </button>
+      <button class="war-tab" data-warmod="concession">
+        <span class="war-tab-num">04</span>
+        <span class="war-tab-label">Concession Calculator</span>
+        <span class="war-tab-sub">Live deal model</span>
+      </button>
+    </div>
+
+    <!-- ====== MODULE 1: OBJECTION HANDLER ====== -->
+    <div class="war-mod" id="warmod-objections">
+      <div class="war-mod-head">
+        <h3>Objection Handler</h3>
+        <p>15 likely objections from Carlos, Daniela, and Sofia — each with a short answer, full response, and exact numbers to cite. Browse by category or stakeholder.</p>
+      </div>
+
+      <div class="obj-filters">
+        <div class="filter-group">
+          <div class="filter-label">Category</div>
+          <div class="filter-pills" id="objCategoryFilter"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Stakeholder</div>
+          <div class="filter-pills" id="objStakeFilter"></div>
+        </div>
+      </div>
+
+      <div class="obj-workspace">
+        <div class="obj-list" id="objList"></div>
+        <div class="obj-detail" id="objDetail"></div>
+      </div>
+    </div>
+
+    <!-- ====== MODULE 2: PLAN B SIMULATOR ====== -->
+    <div class="war-mod hidden" id="warmod-planb">
+      <div class="war-mod-head">
+        <h3>Plan B Simulator</h3>
+        <p>Pick a failure mode — Carlos rejects, approval sprint fails, dLocal drops price, Daniela leaves, FlexiPay delays, or full churn. Each returns probability, AI analysis, a structured response plan, and a post-plan win probability.</p>
+      </div>
+      <div class="plan-b-picker" id="planBPicker"></div>
+      <div class="ai-output" id="planBOutput"></div>
+    </div>
+
+    <!-- ====== MODULE 3: QBR SCRIPT GENERATOR ====== -->
+    <div class="war-mod hidden" id="warmod-qbr">
+      <div class="war-mod-head">
+        <h3>QBR Script Generator</h3>
+        <p>Cue cards for the QBR meeting. Pick a stakeholder — Carlos, Daniela, or Sofia — and get a tailored opening, three bullets adapted to their priorities, and a specific close. Use these as the spine of the conversation.</p>
+      </div>
+      <div class="stakeholder-picker" id="stakePicker"></div>
+      <div class="ai-output" id="qbrOutput"></div>
+    </div>
+
+    <!-- ====== MODULE 4: CONCESSION CALCULATOR ====== -->
+    <div class="war-mod hidden" id="warmod-concession">
+      <div class="war-mod-head">
+        <h3>Concession Calculator</h3>
+        <p>Live deal model. Adjust card rate, platform fee, and PIX rate to see how Yuno's annual revenue from FlexiPay changes — and whether your offer still beats dLocal's headline. The floor line shows Yuno's pricing floor (set by VP).</p>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-controls">
+          <div class="calc-slider">
+            <div class="calc-slider-head">
+              <label>Card take rate</label>
+              <span class="calc-slider-value" id="cardRateVal">0.85%</span>
+            </div>
+            <input type="range" id="cardRate" min="0.67" max="0.95" step="0.01" value="0.85">
+            <div class="calc-slider-scale"><span>0.67% (dLocal)</span><span>0.78% (floor)</span><span>0.95%</span></div>
+          </div>
+
+          <div class="calc-slider">
+            <div class="calc-slider-head">
+              <label>PIX take rate (Brazil)</label>
+              <span class="calc-slider-value" id="pixRateVal">0.55%</span>
+            </div>
+            <input type="range" id="pixRate" min="0.45" max="0.70" step="0.01" value="0.55">
+            <div class="calc-slider-scale"><span>0.45%</span><span>0.50% (dLocal)</span><span>0.70%</span></div>
+          </div>
+
+          <div class="calc-slider">
+            <div class="calc-slider-head">
+              <label>Platform fee</label>
+              <span class="calc-slider-value" id="platformVal">$2,000/mo</span>
+            </div>
+            <input type="range" id="platformFee" min="0" max="2000" step="250" value="2000">
+            <div class="calc-slider-scale"><span>$0 (waived)</span><span>$2,000 (current)</span></div>
+          </div>
+        </div>
+
+        <div class="calc-output">
+          <div class="calc-result-row">
+            <div class="calc-metric">
+              <div class="calc-metric-label">Yuno annual revenue (current TPV)</div>
+              <div class="calc-metric-value" id="calcYunoRev">$2,087,400</div>
+              <div class="calc-metric-delta" id="calcYunoDelta">Baseline</div>
+            </div>
+            <div class="calc-metric">
+              <div class="calc-metric-label">Yuno revenue @ Base case BR+AR</div>
+              <div class="calc-metric-value accent" id="calcYunoNext">$3,038,900</div>
+              <div class="calc-metric-delta" id="calcYunoNextDelta">+ $951K expansion</div>
+            </div>
+          </div>
+
+          <div class="calc-result-row">
+            <div class="calc-metric">
+              <div class="calc-metric-label">Annual concession given</div>
+              <div class="calc-metric-value" id="calcConcession">$0</div>
+              <div class="calc-metric-delta" id="calcConcessionPct">0% of current ARR</div>
+            </div>
+            <div class="calc-metric">
+              <div class="calc-metric-label">vs dLocal cost to FlexiPay</div>
+              <div class="calc-metric-value" id="calcVsDlocal">+$427,920</div>
+              <div class="calc-metric-delta" id="calcVsDlocalLabel">Yuno more expensive</div>
+            </div>
+          </div>
+
+          <div class="calc-verdict" id="calcVerdict">
+            <div class="verdict-icon">○</div>
+            <div class="verdict-text">
+              <strong>Status: Hold the line.</strong>
+              No concessions applied. Yuno is $427K/yr more expensive than dLocal on paper,
+              but that gap is justified by $1.13M of switching costs and $951K of expansion upside.
+            </div>
+          </div>
+
+          <div class="calc-floor-warning hidden" id="calcFloorWarning">
+            ⚠ Card rate is below the $0.78% pricing floor. VP approval required.
+            This resets the LatAm pricing floor for all accounts.
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-presets">
+        <div class="calc-preset-label">Quick presets:</div>
+        <button class="calc-preset" data-preset="hold">Hold the line</button>
+        <button class="calc-preset" data-preset="recommended">Recommended package</button>
+        <button class="calc-preset" data-preset="aggressive">Aggressive match</button>
+        <button class="calc-preset" data-preset="dlocal">Mirror dLocal</button>
+      </div>
+    </div>
+
+    <div class="war-footnote">
+      <strong>How this works.</strong> All four modules are pre-computed from the same financial model
+      in <code>data/model.json</code> — the same source of truth that powers the dashboard and slides.
+      No live LLM calls, no API keys, no demo fragility. The AI work happened upstream: modeling,
+      stress-testing, and drafting objection responses that cite exact numbers consistent across the
+      whole package. This is what a KAM operating system looks like.
+    </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- AI-POWERED TOOLS -->
-<!-- ============================================================ -->
-<section id="ai" class="block ai-block">
-  <div class="section-head">
-    <div class="section-number ai">AI</div>
-    <div>
-      <h3>AI-Powered Tools</h3>
-      <div class="section-sub">Interactive decision-support modules built on the same model.</div>
-    </div>
-  </div>
-
-  <div class="ai-intro">
-    <p>
-      Two AI-assisted modules demonstrating how a KAM can use AI to accelerate
-      account strategy without sacrificing rigor. Both draw from the same financial
-      model that powers the dashboard — same numbers, different lenses.
-    </p>
-  </div>
-
-  <!-- AI Module 1: QBR Script Generator -->
-  <div class="ai-module">
-    <div class="ai-module-head">
-      <div class="ai-badge">AI Module 1</div>
-      <h4>QBR Executive Script Generator</h4>
-      <div class="ai-sub">Pick a stakeholder → get a tailored opening, 3 bullets, and a close.</div>
-    </div>
-    <div class="stakeholder-picker">
-      <button class="stake-btn" data-stake="0">Carlos (CFO)</button>
-      <button class="stake-btn active" data-stake="1">Daniela (Head of Payments)</button>
-      <button class="stake-btn" data-stake="2">Sofia (CEO)</button>
-    </div>
-    <div class="ai-output" id="qbrOutput"></div>
-  </div>
-
-  <!-- AI Module 2: Plan B Generator -->
-  <div class="ai-module">
-    <div class="ai-module-head">
-      <div class="ai-badge">AI Module 2</div>
-      <h4>Dynamic Plan B Generator</h4>
-      <div class="ai-sub">Pick a failure mode → get probability, AI analysis, and a response plan.</div>
-    </div>
-    <div class="plan-b-picker" id="planBPicker"></div>
-    <div class="ai-output" id="planBOutput"></div>
-  </div>
-
-  <div class="ai-footnote">
-    <strong>Methodology note.</strong> These modules are pre-computed from the same
-    underlying financial model (single source of truth in <code>data/model.json</code>).
-    No live LLM calls — all outputs were generated once and cached, so the demo is
-    deterministic and works offline. The actual AI work happened during preparation:
-    building the model, stress-testing assumptions, and drafting narrative at 3× manual speed.
-  </div>
-</section>
+</main>
 
 <footer class="site-footer">
   <div class="container">
@@ -467,11 +642,11 @@
       </div>
       <div class="footer-links">
         <a href="slides.html">Presentation deck →</a>
-        <a href="#overview">Back to top ↑</a>
+        <button class="footer-tab-link" data-nav="overview">Back to overview ↑</button>
       </div>
     </div>
     <div class="footer-credit">
-      Prepared by Nicolas · April 15, 2026 · All numbers verified across sections · Source: <code>data/model.json</code>
+      Prepared by Nicolas · April 15, 2026 · Numbers verified across sections · Source: <code>data/model.json</code>
     </div>
   </div>
 </footer>

@@ -348,5 +348,221 @@
       ],
       "close": "Can we put the executive call on the calendar this week?"
     }
-  ]
+  ],
+  "objection_bank": [
+    {
+      "id": "obj-1",
+      "category": "Pricing",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "dLocal saves us $370K a year. That's real money.",
+      "short_answer": "Actually $427,920. And switching costs $1.13M in Year 1.",
+      "full_response": "Carlos, let me correct the number first \u2014 at your Jan volumes, dLocal's real savings are $427,920, not $370K. I'd rather you work with the right number. Now the harder truth: that $427K evaporates before month 3 once you price in $24K of re-integration engineering, $337K of Brazil launch delay at our Base case, $248K of approval-rate regression from moving to a single-acquirer setup, $180K of tokenization migration churn, and $345K of commitment overage exposure on their $25M/month minimum. Total Year-1 switching cost: $1,135,620. Net impact of switching: negative $707,700. You don't save money. You lose it, and you lose the Brazil launch.",
+      "numbers_to_cite": [
+        "$427,920 headline",
+        "$1,135,620 switching",
+        "\u2212$707,700 net"
+      ]
+    },
+    {
+      "id": "obj-2",
+      "category": "Pricing",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "Your 0.85% is above market. I have quotes at 0.65%.",
+      "short_answer": "0.85% is the median of LatAm orchestration. 0.65% is single-acquirer pricing.",
+      "full_response": "0.85% is the median of the LatAm orchestration market \u2014 benchmark range is 0.70% to 0.95% for fintech at your scale. 0.65% is not orchestration pricing \u2014 it's single-acquirer pricing, which is a different product. You're comparing a router with 3 acquirers in each market against a pipe to one. If you want to benchmark, benchmark performance: approval rate uplift, latency, fallback behavior. That's where the 0.20% of price delta turns into $248-372K/year of approval-rate value for FlexiPay.",
+      "numbers_to_cite": [
+        "0.70-0.95% benchmark range",
+        "$248-372K approval value"
+      ]
+    },
+    {
+      "id": "obj-3",
+      "category": "Pricing",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "Just match their price on cards. Split the difference at 0.76%.",
+      "short_answer": "I can give you $75K of concessions that protect your Brazil launch. Not a card rate drop.",
+      "full_response": "I can't drop the card rate \u2014 and I'll tell you why directly. Dropping it to 0.76% gives you $225K/year of pure commercial concession on an account we're already running at commercial discount. It sets our LatAm pricing floor. What I CAN give you is $75K of structured concessions that map to your specific pain: platform fee waived ($24K), PIX matched at 0.50% on a 24-month Brazil commit ($36K), 40 hours of Solutions Engineering on the Brazil fast-track ($15K), 18-month term with no hard TPV minimum, and a performance SLA on approval rates. Same dollar value, more strategic protection, no precedent. Which one do you want?",
+      "numbers_to_cite": [
+        "$75K concessions",
+        "$24K platform fee",
+        "$36K PIX match"
+      ]
+    },
+    {
+      "id": "obj-4",
+      "category": "Performance",
+      "stakeholder": "Daniela (Head of Payments)",
+      "objection": "Our Peru approval rate has been bad for 3 months. Yuno hasn't fixed it.",
+      "short_answer": "You're right. I'm launching a 90-day sprint with a 3rd Peru acquirer and market-specific SLAs.",
+      "full_response": "You're right \u2014 and that's a fair criticism. Peru is at 72.7% blended approval vs an 80% benchmark. I looked at the data and the problem is routing depth: you have 2 acquirers in Peru vs 3 everywhere else, and the routing rules are from June 2024. I'm launching a 90-day sprint with three concrete actions: first, onboarding a third Peru acquirer \u2014 either Niubiz or Izipay \u2014 within 30 days. Second, Colombia routing refresh, because you're 4.3 points under benchmark there too. Third, baseline metrics locked today so we can measure improvement. I'm also committing to a written SLA with market-specific floors: Peru at 75% (not 80%, because it's structurally harder), Colombia at 80%, Mexico and Chile at 82%. If we miss, you get service credits. That's how this conversation ends differently than last time.",
+      "numbers_to_cite": [
+        "72.7% Peru",
+        "80% benchmark",
+        "75% Peru SLA floor"
+      ]
+    },
+    {
+      "id": "obj-5",
+      "category": "Performance",
+      "stakeholder": "Daniela (Head of Payments)",
+      "objection": "How do I know Yuno's routing is actually better than dLocal?",
+      "short_answer": "Ask dLocal to sign an approval-rate SLA in writing. They won't. Yuno will.",
+      "full_response": "I can't prove it to you in the abstract and neither can they. So here's the test I'd run: ask dLocal's sales team one question in writing \u2014 'Will you commit to matching or exceeding our current January 2025 blended card approval rate of 79.5%, with penalty clauses in the contract?' They won't sign it. Yuno will. Multi-acquirer orchestration is the only architecture that can make that commitment. That's not a marketing claim, it's a structural fact \u2014 dLocal has one acquirer in Peru, and they can't route around a decline they don't see. The SLA is the proof.",
+      "numbers_to_cite": [
+        "79.5% current",
+        "SLA commitment"
+      ]
+    },
+    {
+      "id": "obj-6",
+      "category": "Performance",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "If you're so good, why did TPV drop 8% in January?",
+      "short_answer": "It's seasonal. Proportional across all 4 markets. Support tickets stayed flat.",
+      "full_response": "Fair question, and it's the first thing I'd ask too. The answer is: it's seasonal. Three data points. One \u2014 LatAm BNPL always drops 5 to 12 percent in January after the December peak. PagBrasil, Mercado Pago, dLocal's own public data all show this pattern. Two \u2014 the decline is proportional: Mexico down 8.5, Colombia down 8.0, Chile down 8.7, Peru down 8.3. If merchants were churning, we'd see asymmetric drops. Three \u2014 support tickets went from 12 to 10, down slightly. A platform problem shows up in tickets. Your 6-month TPV growth is still +54%. The dip is mean reversion, not a structural problem.",
+      "numbers_to_cite": [
+        "+54% 6-mo growth",
+        "8-9% proportional"
+      ]
+    },
+    {
+      "id": "obj-7",
+      "category": "Risk & Reliability",
+      "stakeholder": "Daniela (Head of Payments)",
+      "objection": "We need named support and a Slack channel with engineering. Yuno hasn't delivered that.",
+      "short_answer": "You requested it 5 times. That's a Yuno failure. Fixing it by end of week.",
+      "full_response": "This one I own directly. You've requested a dedicated Slack channel with Yuno engineering five times in the last six months, and we haven't delivered. That's not a dLocal advantage, it's a Yuno service failure. Here's what happens this week \u2014 regardless of the renewal outcome: dedicated Slack channel live by Friday, named CSM assigned with weekly (not bi-weekly) syncs, direct escalation path to our Solutions Engineering team, and I'll be your primary point of contact with 4-hour response SLA. I should have had this in place 5 months ago. I'm fixing it now.",
+      "numbers_to_cite": [
+        "5 requests",
+        "Friday deadline"
+      ]
+    },
+    {
+      "id": "obj-8",
+      "category": "Risk & Reliability",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "What happens to our integration if Yuno has an outage?",
+      "short_answer": "Multi-acquirer fallback is exactly why orchestration exists. Single-acquirer platforms can't say that.",
+      "full_response": "This is actually the strongest structural argument for Yuno vs dLocal. A Yuno outage is rare, but when an acquirer has an outage \u2014 which happens more often \u2014 Yuno's multi-acquirer routing automatically fails over to another acquirer in real time. On a single-acquirer platform, when your acquirer goes down, your payments go down. Period. We can show you the reliability numbers: in the last 18 months, FlexiPay has seen zero full-platform outages on Yuno, but Yuno's multi-acquirer routing caught and rerouted on 4 separate acquirer incidents \u2014 each one of which would have been a measurable revenue event on a single-pipe setup. That's not a cost. That's insurance you're already paying for.",
+      "numbers_to_cite": [
+        "4 acquirer incidents caught",
+        "18 months zero downtime"
+      ]
+    },
+    {
+      "id": "obj-9",
+      "category": "Risk & Reliability",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "Switching vendors isn't that hard. dLocal says 6-8 weeks.",
+      "short_answer": "Their 6-8 weeks. Your 160 engineering hours. Plus Brazil delay. Plus 1,280 opportunity hours.",
+      "full_response": "dLocal's 6-8 weeks is their onboarding timeline, not your engineering effort. The real cost is on your side: at a minimum, 160 engineering hours for re-integration, token migration, webhook rewiring, reconciliation rebuild, and production validation. That's 4 weeks of 4 engineers, and you have 4 engineers total. The opportunity cost \u2014 the stuff those engineers are NOT shipping during those 4 weeks \u2014 is 1,280 engineering-hours. Those are the same hours that should be shipping the Brazil launch Sofia committed to the board. So switching doesn't cost you 6-8 weeks. It costs you Brazil Q1. And at Base case that's $337K of lost FlexiPay revenue in the first two months alone.",
+      "numbers_to_cite": [
+        "160 direct hours",
+        "1,280 opportunity hours",
+        "$337K Brazil delay"
+      ]
+    },
+    {
+      "id": "obj-10",
+      "category": "Competitive",
+      "stakeholder": "Sofia (CEO)",
+      "objection": "dLocal is a public company. They're more stable than Yuno.",
+      "short_answer": "Stability isn't the question. Speed to Brazil is. dLocal adds 6 weeks of delay.",
+      "full_response": "I understand why that matters \u2014 as a Series B company, vendor stability is a real concern. But the question isn't which vendor is more stable. The question is which vendor lets you ship Brazil in Q1. Yuno supports PIX, Boleto, and Brazilian local acquiring on your existing integration \u2014 zero new code, 3 weeks to live. dLocal requires full re-integration, 6 to 8 weeks minimum. You told the board 2025 is your Brazil year. Which vendor helps you make good on that commitment? And on stability \u2014 Yuno has processed over $107M of your TPV over the last 6 months with zero critical outages. The track record is in your reporting.",
+      "numbers_to_cite": [
+        "3 weeks vs 6-8",
+        "$107M processed",
+        "Zero critical outages"
+      ]
+    },
+    {
+      "id": "obj-11",
+      "category": "Competitive",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "If we sign with dLocal now, we lock in pricing for 24 months. That's stability.",
+      "short_answer": "It's a $345K/year trap. Your Jan TPV is $20.7M. Their floor is $25M.",
+      "full_response": "24 months at their price is 24 months of a $4.3M per month TPV shortfall against their minimum. Their contract includes a $25M/month TPV floor \u2014 your January was $20.7M. If they enforce committed volume billing \u2014 which is standard in LatAm PSP contracts \u2014 you pay for $25M whether you process it or not. At 0.67%, that's $345,720 per year of overage exposure, on top of the $18 basis points you thought you were saving. And that's just the billing risk. If you miss the minimum for three consecutive months, most of these contracts have repricing or early termination clauses. It's not stability \u2014 it's a trap with a cheaper headline rate.",
+      "numbers_to_cite": [
+        "$345,720 overage risk",
+        "$25M floor",
+        "$20.7M actual"
+      ]
+    },
+    {
+      "id": "obj-12",
+      "category": "Strategic",
+      "stakeholder": "Sofia (CEO)",
+      "objection": "Why should I care about payments infrastructure? It's plumbing.",
+      "short_answer": "Because plumbing is what ships Brazil in 3 weeks instead of 8.",
+      "full_response": "Sofia, I'd agree with you \u2014 it is plumbing, and plumbing shouldn't be a strategic conversation. But in your specific situation, right now, this plumbing decision determines whether you ship Brazil in Q1. Yuno's existing integration supports PIX and Brazilian local acquiring today. Switching resets that clock by 6 to 8 weeks minimum. That's 6 to 8 weeks of first-mover advantage you cannot get back in a market where your competitors are also racing. Under our Base case, Brazil and Argentina generate $1.24M of net FlexiPay revenue in Year 1 \u2014 2.9 times the dLocal headline savings. The plumbing decision is the Brazil decision.",
+      "numbers_to_cite": [
+        "$1.24M Base upside",
+        "2.9\u00d7 savings",
+        "Q1 Brazil"
+      ]
+    },
+    {
+      "id": "obj-13",
+      "category": "Strategic",
+      "stakeholder": "Daniela (Head of Payments)",
+      "objection": "I want to stay with Yuno but Carlos won't let me. What do I do?",
+      "short_answer": "Co-present the QBR with me. Hand Carlos the switching-cost math yourself.",
+      "full_response": "Here's what works: don't make it a Daniela vs Carlos conversation. Make it a Daniela + Nicolas vs the numbers conversation. I want you to co-present the QBR tomorrow with me. I hand you the math, you hand Carlos the math. That way it's not your opinion versus his mandate \u2014 it's joint analysis. I've prepared specific talking points for each of his likely objections, with the exact numbers. Second: I'm requesting a call between Yuno's CEO and Sofia this week. If Sofia hears the strategic framing from a peer, it reframes the conversation from 'vendor line item' to 'strategic partnership for the Series B expansion'. Third: I'll deliver a written counter-proposal to Carlos tomorrow that addresses every dLocal point on paper. He can't argue with math he has in front of him. You don't carry this alone.",
+      "numbers_to_cite": [
+        "Joint QBR",
+        "Yuno CEO call",
+        "Written counter"
+      ]
+    },
+    {
+      "id": "obj-14",
+      "category": "Closing",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "I need to think about it and talk to the board.",
+      "short_answer": "Take the week. But sign the Brazil fast-track letter of intent today.",
+      "full_response": "Of course \u2014 this is a board-level decision and I'd expect you to take it to them. What I'd ask is that we decouple two decisions. The renewal decision can wait a week \u2014 I trust your process. But the Brazil fast-track decision can't wait, because every week we delay loses you first-mover advantage and ships $2.5M of deferred Base-case TPV into February. So here's what I propose: you take the week on the renewal. In parallel, we sign a Letter of Intent today that locks Yuno as your Brazil launch partner and starts the Solutions Engineering work at no cost to you. If the renewal goes your way, the Brazil work is already underway and you're live in 3 weeks. If the renewal doesn't go our way \u2014 which I don't think will happen \u2014 the LOI is non-binding and you've lost nothing. What's the downside?",
+      "numbers_to_cite": [
+        "LOI today",
+        "$2.5M/week delay"
+      ]
+    },
+    {
+      "id": "obj-15",
+      "category": "Closing",
+      "stakeholder": "Carlos (CFO)",
+      "objection": "Give me your final offer.",
+      "short_answer": "Platform fee waived. PIX at 0.50%. 18-month term. Approval SLA. BR fast-track. $75K total give.",
+      "full_response": "Final offer, in writing by end of day: one \u2014 platform fee waived, saves you $24,000 per year. Two \u2014 PIX take rate matched to dLocal at 0.50% on a 24-month Brazil commitment. Three \u2014 18-month term, no hard TPV minimum, pricing review only if TPV drops more than 25% for 3 consecutive months. Four \u2014 performance SLA with market-specific approval-rate floors and service credits if we miss. Five \u2014 40 hours of Solutions Engineering dedicated to your Brazil fast-track, zero cost to you. Six \u2014 dedicated CSM and Slack channel live this week. Total value of concessions: approximately $75,000 per year. In exchange, Yuno keeps the card take rate at 0.85% \u2014 which is where the performance guarantee lives \u2014 and you get Brazil live in 3 weeks, Argentina ready to follow, and an account team accountable to outcomes. That's the offer. Do we have a deal?",
+      "numbers_to_cite": [
+        "$75K concessions",
+        "0.50% PIX",
+        "0.85% cards held"
+      ]
+    }
+  ],
+  "concession_rules": {
+    "current_jan_tpv": {
+      "cards": 18.7,
+      "local": 2.0
+    },
+    "current_rates": {
+      "cards": 0.85,
+      "local": 0.65,
+      "platform_fee_monthly": 2000
+    },
+    "dlocal_competitive_reference": {
+      "cards": 0.67,
+      "local": 0.65,
+      "platform_fee_monthly": 0
+    },
+    "dlocal_annual_cost": 1659480,
+    "pricing_floor": {
+      "cards": 0.78,
+      "note": "Cards at 0.78% is the absolute floor per VP. Below this resets LatAm pricing for all accounts."
+    },
+    "brazil_expansion_revenue": {
+      "base_case_y1_yuno": 747250,
+      "base_case_y1_pix": 363000
+    }
+  }
 }
