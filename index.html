@@ -22,27 +22,31 @@
     </div>
     <nav class="tab-nav" role="tablist">
       <button class="tab-btn" data-tab="overview" role="tab">
-        <span class="tab-num">01</span>
+        <span class="tab-num">00</span>
         <span class="tab-label">Overview</span>
       </button>
+      <button class="tab-btn" data-tab="situation" role="tab">
+        <span class="tab-num">S</span>
+        <span class="tab-label">Situation</span>
+      </button>
       <button class="tab-btn" data-tab="qbr" role="tab">
-        <span class="tab-num">02</span>
+        <span class="tab-num">§1</span>
         <span class="tab-label">QBR</span>
       </button>
       <button class="tab-btn" data-tab="expansion" role="tab">
-        <span class="tab-num">03</span>
+        <span class="tab-num">§2</span>
         <span class="tab-label">Expansion</span>
       </button>
       <button class="tab-btn" data-tab="retention" role="tab">
-        <span class="tab-num">04</span>
+        <span class="tab-num">§3</span>
         <span class="tab-label">Retention</span>
       </button>
       <button class="tab-btn" data-tab="memo" role="tab">
-        <span class="tab-num">05</span>
-        <span class="tab-label">Internal Memo</span>
+        <span class="tab-num">§4</span>
+        <span class="tab-label">VP Memo</span>
       </button>
       <button class="tab-btn war" data-tab="warroom" role="tab">
-        <span class="tab-num">06</span>
+        <span class="tab-num">⚡</span>
         <span class="tab-label">War Room</span>
       </button>
     </nav>
@@ -101,35 +105,113 @@
 
     <div class="overview-summary">
       <div class="summary-card">
-        <div class="summary-num">01</div>
+        <div class="summary-num">S · Situation</div>
+        <h4>Strategic Analysis</h4>
+        <p>How I read this brief. MEDDPICC qualification, stakeholder power–interest matrix, Bain value pyramid, five principles, and a formal risk register. This is what drove every decision in the deliverables.</p>
+        <button class="card-link" data-nav="situation">Read the analysis →</button>
+      </div>
+      <div class="summary-card">
+        <div class="summary-num">§1 · Account Health</div>
         <h4>QBR Narrative</h4>
-        <p>+69% TPV growth in 5 months. Three strategic insights for Daniela, Carlos, and Sofia. The January dip is seasonal, not structural.</p>
+        <p>Data-driven review: TPV trends, the January dip explained, approval gap analysis, payment method efficiency, NPS verbatim decoded, support ticket trend, cost benchmarking — and three strategic insights.</p>
         <button class="card-link" data-nav="qbr">View QBR →</button>
       </div>
       <div class="summary-card">
-        <div class="summary-num">02</div>
-        <h4>Expansion Model</h4>
-        <p>Brazil + Argentina across 3 scenarios. Base case: $951K Yuno revenue and $1.24M FlexiPay upside in Year 1.</p>
+        <div class="summary-num">§2 · Growth Model</div>
+        <h4>Expansion: Brazil + Argentina</h4>
+        <p>Three scenarios (Conservative / Base / Aggressive) with explicit assumptions. Base case: $951K Yuno revenue and $1.24M FlexiPay upside in Year 1.</p>
         <button class="card-link" data-nav="expansion">View model →</button>
       </div>
       <div class="summary-card">
-        <div class="summary-num">03</div>
-        <h4>dLocal Response</h4>
-        <p>Point-by-point counter. $1.13M switching cost waterfall. 30-day action plan with owners.</p>
+        <div class="summary-num">§3 · Retention</div>
+        <h4>Competitive Response</h4>
+        <p>Point-by-point counter to dLocal's proposal. $1.13M switching cost waterfall. Performance risk, contract risk, 30-day action plan with owners.</p>
         <button class="card-link" data-nav="retention">View response →</button>
       </div>
       <div class="summary-card">
-        <div class="summary-num">04</div>
-        <h4>Internal Memo</h4>
-        <p>$75K of concessions to protect $2.06M ARR and unlock $951K expansion. Decisions needed from VP in 72 hours.</p>
+        <div class="summary-num">§4 · Internal Memo</div>
+        <h4>Memo to Yuno VP</h4>
+        <p>$75K of concessions to protect $2.06M ARR and unlock $951K expansion. Risk level HIGH. Decisions needed from VP in 72 hours. Plan B included.</p>
         <button class="card-link" data-nav="memo">View memo →</button>
       </div>
       <div class="summary-card highlight">
-        <div class="summary-num">06</div>
-        <h4>War Room</h4>
-        <p>The KAM operating system. 15 objections, Plan B simulator, QBR scripts, and a live Concession Calculator that generates three outputs: Client QBR, Formal Proposal, and VP approval memo — all from one backend.</p>
+        <div class="summary-num">⚡ War Room</div>
+        <h4>KAM Operating System</h4>
+        <p>Live decision support: 15 objection responses, Plan B simulator, QBR scripts, Concession Calculator with the Iceberg, and a sync engine that generates three outputs — Client QBR, Formal Proposal, VP memo — from one backend.</p>
         <button class="card-link" data-nav="warroom">Enter War Room →</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- VIEW — SITUATION ANALYSIS (strategic framework) -->
+<!-- ============================================================ -->
+<section class="view" id="view-situation" data-view="situation">
+  <div class="view-inner">
+    <div class="view-head">
+      <div class="view-eyebrow">Strategic Analysis · How I read this brief</div>
+      <h2>Situation</h2>
+      <p class="view-lede">
+        Before the four deliverables, here is the analysis that drove every decision.
+        Frameworks used: MEDDPICC, Bain Value Pyramid, Power–Interest Matrix, and a
+        structured Risk Register. This is what an Enterprise KAM does before the work, not after.
+      </p>
+    </div>
+
+    <!-- Executive Brief -->
+    <div class="situation-brief">
+      <div class="brief-eyebrow">Executive Situation Brief</div>
+      <p id="execBrief"></p>
+    </div>
+
+    <!-- 4 Forces -->
+    <h3 class="section-title-lg">The Four Forces on this Account</h3>
+    <p class="section-sub-lg">Each force has a stakeholder, a data point, and a tension with the others. A good KAM holds all four in their head at once.</p>
+    <div class="forces-grid" id="forcesGrid"></div>
+
+    <!-- MEDDPICC -->
+    <h3 class="section-title-lg">MEDDPICC Qualification</h3>
+    <p class="section-sub-lg">The Enterprise B2B qualification framework. Every letter is filled with specific evidence from the FlexiPay dossier, not generic placeholders.</p>
+    <div class="meddpicc-grid" id="meddpiccGrid"></div>
+
+    <!-- Stakeholder Power-Interest Matrix -->
+    <h3 class="section-title-lg">Stakeholder Power–Interest Matrix</h3>
+    <p class="section-sub-lg">Three stakeholders, three strategies. The matrix tells you where to spend energy: empower champions, neutralize blockers, activate sleepers.</p>
+    <div class="stakeholder-matrix">
+      <div class="matrix-plot" id="matrixPlot"></div>
+      <div class="matrix-legend" id="matrixLegend"></div>
+    </div>
+
+    <!-- Value Pyramid -->
+    <h3 class="section-title-lg">Bain Value Pyramid — Where Yuno vs dLocal Compete</h3>
+    <p class="section-sub-lg">dLocal competes only at the Functional level. Yuno wins Levels 2 and 3 structurally. The whole renewal conversation has to be moved up the pyramid.</p>
+    <div class="value-pyramid" id="valuePyramid"></div>
+
+    <!-- Key Principles -->
+    <h3 class="section-title-lg">Five Principles That Guided This Package</h3>
+    <p class="section-sub-lg">The hardest part of a renewal under pressure is holding discipline. These are the principles I committed to before touching the numbers.</p>
+    <div class="principles-grid" id="principlesGrid"></div>
+
+    <!-- Risk Register -->
+    <h3 class="section-title-lg">Risk Register</h3>
+    <p class="section-sub-lg">Probability × Impact, scored, with owners and mitigations. Live tracking of everything that could break the deal, and what we do about each.</p>
+    <div class="risk-register">
+      <table class="risk-table" id="riskTable"></table>
+    </div>
+
+    <!-- Methodology note -->
+    <div class="methodology-note">
+      <div class="method-head">Methodology</div>
+      <p>
+        This analysis uses <strong>MEDDPICC</strong> (Lister et al., the B2B enterprise qualification standard),
+        the <strong>Bain Value Pyramid of Elements of Value</strong> (B2B version, 40 elements across 5 tiers —
+        I've collapsed to 3 for readability), a <strong>Stakeholder Power–Interest Matrix</strong>
+        (Mendelow's grid), and a formal <strong>Risk Register</strong> with scored probability × impact.
+        Everything traceable to the data in the FlexiPay dossier. The goal is not to use frameworks for
+        their own sake — it's to demonstrate that under renewal pressure, this KAM doesn't improvise.
+        Frameworks are the opposite of panic.
+      </p>
     </div>
   </div>
 </section>
@@ -140,17 +222,21 @@
 <section class="view" id="view-qbr" data-view="qbr">
   <div class="view-inner">
     <div class="view-head">
-      <div class="view-eyebrow">§1 · Account Health</div>
-      <h2>Quarterly Business Review</h2>
-      <p class="view-lede">What I'd present to Daniela, Carlos, and Sofia tomorrow.</p>
+      <div class="view-eyebrow">§1 · QBR Narrative & Account Health</div>
+      <h2>QBR Narrative</h2>
+      <p class="view-lede">
+        Data-driven performance review for the FlexiPay QBR meeting tomorrow.
+        Same analysis I would hand Daniela for her CFO conversation. The
+        <a href="slides.html" target="_blank" rel="noopener" style="color: var(--blue); text-decoration: none; font-weight: 600;">Client QBR deck →</a>
+        is the artifact that gets presented to FlexiPay; this is the reasoning.
+      </p>
     </div>
 
     <div class="callout">
-      <strong>The story in one sentence:</strong>
-      FlexiPay grew TPV <strong>+69% in five months</strong> on Yuno, but is leaving
-      <strong>~$6.1M/year</strong> of approved-transaction TPV on the table because three
-      markets are underperforming LatAm benchmarks — and Brazil is now the lever that
-      turns that gap into a moat.
+      <strong>The story in one sentence.</strong>
+      FlexiPay grew TPV <strong>+69% from Aug to Dec</strong>, averaging <strong>+54% over six months</strong>,
+      but is leaving <strong>~$6.1M/year</strong> of approved-transaction TPV on the table because three
+      markets are underperforming LatAm benchmarks — and Brazil is now the lever that turns that gap into a moat.
     </div>
 
     <div class="chart-grid">
@@ -167,6 +253,18 @@
           <div class="card-sub">Monthly revenue to Yuno from FlexiPay</div>
         </div>
         <canvas id="revChart"></canvas>
+      </div>
+    </div>
+
+    <!-- January dip analysis -->
+    <div class="analysis-block" id="janDipBlock">
+      <div class="analysis-head">
+        <div class="analysis-eyebrow">Data Integrity Check</div>
+        <h3>The January dip is seasonal. Here's how I know.</h3>
+      </div>
+      <div class="analysis-body">
+        <p>Every candidate reads the <strong>−8.4%</strong> January drop as a churn signal. It isn't. Four data points rule out a structural problem:</p>
+        <ul class="evidence-list" id="janDipEvidence"></ul>
       </div>
     </div>
 
@@ -187,28 +285,92 @@
       </div>
     </div>
 
+    <!-- Payment method efficiency -->
+    <div class="analysis-block">
+      <div class="analysis-head">
+        <div class="analysis-eyebrow">Payment Method Analysis</div>
+        <h3>Local methods are fine. Cards are the bleed.</h3>
+      </div>
+      <div class="analysis-body">
+        <p><strong>OXXO in MX runs at 91%. PSE in CO at 88%. Webpay in CL at 89%.</strong> These local methods are at or above LatAm benchmark — no action needed, protect the share. The entire approval-rate problem lives in <strong>cards</strong>, specifically in Peru and Colombia where routing depth is lowest. This is important because the fix is <em>routing intelligence</em>, not <em>more payment methods</em>.</p>
+        <div class="method-grid" id="methodGrid"></div>
+      </div>
+    </div>
+
+    <!-- NPS verbatim analysis -->
+    <div class="analysis-block">
+      <div class="analysis-head">
+        <div class="analysis-eyebrow">Voice of the Customer</div>
+        <h3>Decoding the NPS verbatim · Daniela's words are a blueprint</h3>
+      </div>
+      <div class="analysis-body">
+        <div class="nps-score">
+          <div class="nps-num">7<span class="nps-total">/10</span></div>
+          <div class="nps-segment">Passive</div>
+          <div class="nps-date">Dec 2024</div>
+        </div>
+        <blockquote class="nps-quote" id="npsQuote"></blockquote>
+        <p style="margin-bottom: 14px; color: var(--text-secondary);">Every clause in that sentence is a specific instruction:</p>
+        <div class="nps-decode" id="npsDecode"></div>
+      </div>
+    </div>
+
+    <!-- Support ticket trend -->
+    <div class="analysis-block">
+      <div class="analysis-head">
+        <div class="analysis-eyebrow">Operational Signal</div>
+        <h3>Support tickets up 71% · this is a warning, not a reason to leave</h3>
+      </div>
+      <div class="analysis-body">
+        <p id="ticketInsight"></p>
+        <div class="ticket-chart-wrap">
+          <canvas id="ticketChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cost efficiency -->
+    <div class="analysis-block">
+      <div class="analysis-head">
+        <div class="analysis-eyebrow">Cost Efficiency Benchmark</div>
+        <h3>Yuno is priced at the LatAm median. dLocal is at the bottom.</h3>
+      </div>
+      <div class="analysis-body">
+        <div class="cost-benchmark" id="costBenchmark"></div>
+        <p style="margin-top: 18px; color: var(--text-secondary);">
+          <strong>A 0.67% card take rate isn't a better deal — it's a different product.</strong>
+          Single-acquirer PSPs price at the bottom of the band because they make margin elsewhere
+          (FX spread, slower settlement, fewer acquirer fees). If you want to benchmark Yuno,
+          benchmark <em>performance</em>, not price.
+        </p>
+      </div>
+    </div>
+
     <h4 class="section-title">Three strategic insights</h4>
     <div class="insights">
       <div class="insight">
-        <div class="insight-num">01</div>
+        <div class="insight-num">INSIGHT 01</div>
         <h5>You're not paying for Yuno. You're paying for a routing brain.</h5>
         <p>Every 1 point of blended approval = <strong>$124K/year</strong> of FlexiPay net revenue.
         Yuno's multi-acquirer routing delivers 2–3 points of lift over single-acquirer baselines
-        over 18 months. That's $248K–$372K/year of value dLocal's architecture can't reproduce.</p>
+        over 18 months. That's $248K–$372K/year of value dLocal's architecture can't reproduce —
+        and the SLA we'll commit to in this renewal is the structural proof.</p>
       </div>
       <div class="insight">
-        <div class="insight-num">02</div>
+        <div class="insight-num">INSIGHT 02</div>
         <h5>Brazil is not a cost question. It's a speed question.</h5>
         <p>Yuno already supports PIX, Boleto, and BR local acquiring — <strong>0 weeks of new integration</strong>.
         dLocal requires full re-integration: <strong>6–8 weeks of your 4-dev team</strong>.
-        Every week of delay is $2.5M of deferred TPV and permanent share loss to competitors Sofia is racing.</p>
+        Every week of delay is $2.5M of deferred Base-case TPV and permanent share loss to
+        competitors Sofia is racing against.</p>
       </div>
       <div class="insight">
-        <div class="insight-num">03</div>
+        <div class="insight-num">INSIGHT 03</div>
         <h5>Your engineering constraint is the real story.</h5>
         <p>FlexiPay has 4 backend devs, 12 open roles, Brazil on the line.
         dLocal migration consumes <strong>1,280 engineering hours of opportunity cost</strong>.
-        Those same hours on Yuno's Brazil fast-track generate <strong>$990K of Year-1 upside</strong>.</p>
+        Those same hours on Yuno's Brazil fast-track generate <strong>$990K of Base-case Y1 upside</strong>.
+        The highest-ROI decision this quarter is the one that protects your engineering team, not the one that cuts your invoice.</p>
       </div>
     </div>
   </div>

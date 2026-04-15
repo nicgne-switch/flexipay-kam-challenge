@@ -564,5 +564,331 @@
       "base_case_y1_yuno": 747250,
       "base_case_y1_pix": 363000
     }
+  },
+  "situation": {
+    "executive_brief": "FlexiPay is an 18-month Yuno account in high-risk renewal with three overlapping pressures: a CFO-driven cost reduction mandate, a champion who needs ammunition, and a Brazil expansion window that closes in Q1. dLocal has submitted a competitor proposal designed to look cheaper on paper by $427K/yr, but which destroys $707K of FlexiPay value once switching costs are priced in. Our job is to surface the iceberg, empower the champion, and convert a defensive renewal conversation into a strategic partnership decision framed around Brazil speed \u2014 where Yuno structurally wins.",
+    "four_forces": [
+      {
+        "name": "Cost Pressure",
+        "owner": "Carlos (CFO)",
+        "data": "6 months in seat with board mandate to extend runway post-Series A",
+        "pull": "Reduce vendor spend, measurable line-item savings",
+        "tension": "Wants visible cost wins, even at strategic cost"
+      },
+      {
+        "name": "Performance Expectation",
+        "owner": "Daniela (Head of Payments)",
+        "data": "NPS 7 passive \u00b7 verbatim mentioned PE routing inconsistency + support slippage",
+        "pull": "Approval rate uplift, faster expansion support, dedicated ops",
+        "tension": "Trusts Yuno but needs quantified proof for CFO"
+      },
+      {
+        "name": "Brazil Urgency",
+        "owner": "Sofia (CEO)",
+        "data": "$50M Series B closed Jan 15, 2025 \u00b7 public commitment to 2025 Brazil",
+        "pull": "First-mover advantage before competitors lock up market",
+        "tension": "Cares about speed, not vendor line items"
+      },
+      {
+        "name": "Engineering Constraint",
+        "owner": "FlexiPay eng team (structural)",
+        "data": "4 backend devs \u00b7 12 open roles \u00b7 2,000 merchant partners to manage",
+        "pull": "Minimize burden of any payments work \u00b7 protect dev capacity",
+        "tension": "Switching consumes 1,280 hours that should ship Brazil"
+      }
+    ],
+    "meddpicc": [
+      {
+        "letter": "M",
+        "label": "Metrics",
+        "filled": "Approval rate uplift (current 79.5% \u2192 target 82%), Brazil TPV Base case $11M/mo M6, $305K/yr approval gap upside, $1.24M FlexiPay Y1 net revenue upside under Base case expansion."
+      },
+      {
+        "letter": "E",
+        "label": "Economic Buyer",
+        "filled": "Carlos Mendoza \u2014 CFO, 6 months in seat, post-Series A cost-cutting mandate. Approves or rejects commercial terms. Cold relationship. Focus: ROI and margin expansion, not partnership narrative."
+      },
+      {
+        "letter": "D",
+        "label": "Decision Criteria",
+        "filled": "Cost (weight ~40%), payment performance SLA (~30%), Brazil go-live speed (~20%), engineering effort (~10%). Our proposal wins on 3 of 4 \u2014 we lose on headline cost until switching costs are priced in."
+      },
+      {
+        "letter": "D",
+        "label": "Decision Process",
+        "filled": "Daniela recommends \u2192 Carlos approves commercial terms \u2192 Sofia breaks ties on strategic direction. 60-day notice clause in current contract. If no notice given, contract auto-renews on March 15, 2025."
+      },
+      {
+        "letter": "P",
+        "label": "Paper Process",
+        "filled": "Standard SaaS renewal \u2014 legal review by both sides, procurement sign-off at FlexiPay, ~2-week cycle. No SOC2 or security review blockers (already cleared for initial contract)."
+      },
+      {
+        "letter": "I",
+        "label": "Identify Pain",
+        "filled": "Peru routing at 72.7% approval (\u22127.3pt vs 80% benchmark). Colombia at 75.7% (\u22124.3pt). Dedicated support channel requested 5 times, not delivered. Brazil unlaunched despite Series B mandate. 1,280 eng-hours needed for any migration = Brazil delay."
+      },
+      {
+        "letter": "C",
+        "label": "Champion",
+        "filled": "Daniela Ramos \u2014 Head of Payments, ex-Mercado Pago. Strong trust. Owes Yuno for 2 past delivery wins (CO acquirer in 3 days, webhook debug in 24h). Data-driven, hates fluff. Quote: 'If we're really better, prove it with numbers.'"
+      },
+      {
+        "letter": "C",
+        "label": "Competition",
+        "filled": "dLocal \u2014 public company, primarily cross-border PSP and local acquirer. Single-acquirer architecture in PE/CO. 24-month contract, $25M/mo TPV minimum ($4.3M overage for FlexiPay). Offer: 0.67% cards, $0 platform fee, 20h free BR integration, 24-mo lock-in."
+      }
+    ],
+    "stakeholder_matrix": [
+      {
+        "name": "Daniela Ramos",
+        "role": "Head of Payments",
+        "power": "Medium",
+        "interest": "High",
+        "strategy": "Empower",
+        "tactic": "Hand her the math. Co-present the QBR. Make it her win, not yours.",
+        "trust": "High (12-month relationship, 2 delivery wins)",
+        "position": {
+          "x": 70,
+          "y": 60
+        }
+      },
+      {
+        "name": "Carlos Mendoza",
+        "role": "CFO",
+        "power": "High",
+        "interest": "Medium",
+        "strategy": "Neutralize",
+        "tactic": "Bottom-line first. Correct his numbers ($370K \u2192 $427K). Show the iceberg. Give him a visible win ($75K concession package).",
+        "trust": "Low-neutral (2 meetings total, transactional)",
+        "position": {
+          "x": 45,
+          "y": 85
+        }
+      },
+      {
+        "name": "Sofia Alvarez",
+        "role": "CEO",
+        "power": "High",
+        "interest": "Low",
+        "strategy": "Activate",
+        "tactic": "Elevate the conversation to strategic. Brazil first-mover framing. Yuno CEO \u2192 Sofia call. Her lens is market capture, not line items.",
+        "trust": "Nascent (1 meeting, dinner setting)",
+        "position": {
+          "x": 30,
+          "y": 85
+        }
+      }
+    ],
+    "value_pyramid": [
+      {
+        "level": "Life-changing",
+        "rank": 3,
+        "yuno_value": "Enables Sofia's 2025 Brazil mandate in Q1 \u2014 the #1 public commitment to her board. Protects first-mover advantage in a time-sensitive market.",
+        "dlocal_value": "None. dLocal delays Brazil by 6-8 weeks, forfeiting Sofia's Q1 window.",
+        "yuno_wins": true
+      },
+      {
+        "level": "Emotional",
+        "rank": 2,
+        "yuno_value": "Reduces risk (proven 18-month reliability, zero outages). Reduces effort (no new integration for Brazil). Protects FlexiPay engineering team from switching burden.",
+        "dlocal_value": "1,280 hours of engineering diverted to re-integration. Tokenization migration risk. Cross-vendor transition stress.",
+        "yuno_wins": true
+      },
+      {
+        "level": "Functional",
+        "rank": 1,
+        "yuno_value": "Processes payments. Current ARR to FlexiPay $2.06M. Median LatAm pricing (0.83% effective).",
+        "dlocal_value": "Processes payments. Headline 0.67% cards. $427K/yr cheaper on paper. This is the only level where dLocal competes.",
+        "yuno_wins": false,
+        "note": "dLocal only competes at Level 1. Yuno wins Levels 2 and 3 structurally. The renewal conversation has to move up the pyramid."
+      }
+    ],
+    "key_principles": [
+      {
+        "principle": "Hold pricing, sell the SLA",
+        "explanation": "Dropping the card rate forfeits the performance SLA \u2014 which is the single biggest structural differentiator vs dLocal. Below 0.80% also sets a LatAm pricing floor for every other Yuno account. Discipline over easy wins."
+      },
+      {
+        "principle": "Protect engineering, be the shield",
+        "explanation": "FlexiPay's 4-dev team is their binding constraint, not their budget. Every decision should minimize engineering burden. Brazil fast-track on existing Yuno instance = 0 new integration, while dLocal costs them 1,280 eng-hours."
+      },
+      {
+        "principle": "Brazil speed over Brazil savings",
+        "explanation": "Sofia's priority is first-mover advantage, not pricing. Yuno gets FlexiPay live in 3 weeks vs dLocal's 6-8 weeks. That 5-week delta is worth more than the $427K headline savings."
+      },
+      {
+        "principle": "Quantify the iceberg",
+        "explanation": "Every competitive proposal looks good on headline. The KAM's job is to surface the hidden structural costs \u2014 switching effort, opportunity cost, performance risk, commitment overage \u2014 so the buyer sees the full cost, not the brochure."
+      },
+      {
+        "principle": "Three audiences, three outputs",
+        "explanation": "A KAM Leader operates with three audiences simultaneously: the client (FlexiPay), internal leadership (Yuno VP), and the champion (Daniela). Each needs a different artifact with the same underlying numbers. One backend, three outputs, zero copy-paste."
+      }
+    ],
+    "risk_register": [
+      {
+        "id": "R1",
+        "risk": "Carlos overrules Daniela despite quantified case",
+        "probability": "30%",
+        "impact": "High",
+        "score": 9,
+        "mitigation": "Yuno CEO \u2192 Sofia escalation call within 14 days. Reframe from vendor line item to strategic partnership. Offer written counter with iceberg visual.",
+        "owner": "Nicolas + Yuno VP",
+        "status": "Active"
+      },
+      {
+        "id": "R2",
+        "risk": "Approval-rate sprint misses targets in Peru",
+        "probability": "25%",
+        "impact": "Medium",
+        "score": 6,
+        "mitigation": "Pre-negotiate Niubiz or Izipay as 3rd PE acquirer within 30 days. Market-specific SLA floors: PE at 75% (not 80%). Rolling 90-day measurement.",
+        "owner": "Yuno Solutions Engineering",
+        "status": "Planned"
+      },
+      {
+        "id": "R3",
+        "risk": "FlexiPay delays renewal decision past 45 days",
+        "probability": "20%",
+        "impact": "Low",
+        "score": 3,
+        "mitigation": "Auto-renew clause works in our favor. Schedule 'Brazil readiness review' on day 30 to force decision. Decouple renewal from Brazil LOI.",
+        "owner": "Nicolas",
+        "status": "Monitoring"
+      },
+      {
+        "id": "R4",
+        "risk": "dLocal drops card take rate below 0.60%",
+        "probability": "15%",
+        "impact": "Medium",
+        "score": 4,
+        "mitigation": "Do NOT engage in price war. Pivot to outcome-based terms: performance SLA with service credits, rebate per approval point above floor. Hold 0.80% as absolute floor.",
+        "owner": "Nicolas + Yuno VP",
+        "status": "Planned"
+      },
+      {
+        "id": "R5",
+        "risk": "Daniela leaves FlexiPay mid-negotiation",
+        "probability": "10%",
+        "impact": "High",
+        "score": 7,
+        "mitigation": "Broaden champion base to FlexiPay engineering (4 devs). Document all Yuno deliverables in writing so successor has evidence without her endorsement. Offer her Yuno advisory role within 48h if she leaves.",
+        "owner": "Nicolas",
+        "status": "Monitoring"
+      },
+      {
+        "id": "R6",
+        "risk": "Full churn to dLocal",
+        "probability": "15%",
+        "impact": "Critical",
+        "score": 12,
+        "mitigation": "6-month safety-net clause for win-back. Turn FlexiPay's 18-mo track record into public case study. Extract post-mortem data from Daniela for pipeline use.",
+        "owner": "Nicolas + VP",
+        "status": "Plan B ready"
+      }
+    ]
+  },
+  "qbr_extended": {
+    "january_dip_analysis": {
+      "headline": "January -8.4% is seasonal, not structural",
+      "evidence": [
+        "Proportional decline across all 4 markets: MX -8.5%, CO -8.0%, CL -8.7%, PE -8.3%",
+        "Support tickets flat (12 \u2192 10) \u2014 a platform problem would spike tickets",
+        "LatAm BNPL seasonality: Dec peak is anomaly, Jan is reversion \u2014 PagBrasil, Mercado Pago, dLocal public data confirm",
+        "Trailing 6-month growth intact at +54%"
+      ]
+    },
+    "payment_method_efficiency": [
+      {
+        "market": "Mexico",
+        "method": "OXXO (local)",
+        "approval": 91,
+        "status": "Strong",
+        "tpv_share": "11% of MX",
+        "insight": "Best-performing local method. No action needed \u2014 protect this share."
+      },
+      {
+        "market": "Colombia",
+        "method": "PSE (local)",
+        "approval": 88,
+        "status": "Good",
+        "tpv_share": "9% of CO",
+        "insight": "Slight optimization opportunity. Focus on cards, which are the drag."
+      },
+      {
+        "market": "Chile",
+        "method": "Webpay (local)",
+        "approval": 89,
+        "status": "Good",
+        "tpv_share": "10% of CL",
+        "insight": "Stable. Monitor only."
+      }
+    ],
+    "support_ticket_analysis": {
+      "headline": "Support ticket volume is a warning signal we need to fix \u2014 it's NOT a reason to leave",
+      "data": [
+        {
+          "month": "Aug",
+          "total": 7,
+          "critical": 0
+        },
+        {
+          "month": "Sep",
+          "total": 10,
+          "critical": 1
+        },
+        {
+          "month": "Oct",
+          "total": 6,
+          "critical": 0
+        },
+        {
+          "month": "Nov",
+          "total": 8,
+          "critical": 1
+        },
+        {
+          "month": "Dec",
+          "total": 12,
+          "critical": 0
+        },
+        {
+          "month": "Jan",
+          "total": 10,
+          "critical": 0
+        }
+      ],
+      "insight": "71% increase from Aug to Dec. Dominant topic: routing (5 tickets in Dec, 4 in Jan). This confirms the approval-rate sprint is the right intervention. Routing tickets = FlexiPay's own engineers noticing the problem we should have fixed already."
+    },
+    "nps_verbatim": {
+      "score": 7,
+      "segment": "Passive",
+      "verbatim": "Yuno saves us a ton of integration work, but routing performance in Peru is inconsistent and support response times have slipped.",
+      "decoded": [
+        {
+          "they_said": "Yuno saves us a ton of integration work",
+          "what_that_means": "They know the switching cost. They don't want to do it again. This is an advantage we haven't fully leveraged \u2014 make it explicit in the QBR."
+        },
+        {
+          "they_said": "routing performance in Peru is inconsistent",
+          "what_that_means": "Peru routing is a concrete, quantified gap (\u22127.3pt). It's the first thing I'd fix. 90-day sprint commitment with SLA floor."
+        },
+        {
+          "they_said": "support response times have slipped",
+          "what_that_means": "This is operational debt Yuno owes FlexiPay. Fix it this week \u2014 dedicated Slack, named CSM, 4h SLA \u2014 regardless of renewal outcome. It's the right thing to do."
+        }
+      ]
+    },
+    "cost_efficiency": {
+      "flexipay_effective_take": 0.83,
+      "benchmark_median": 0.82,
+      "benchmark_range": [
+        0.7,
+        0.95
+      ],
+      "dlocal_proposed": 0.67,
+      "analysis": "FlexiPay is paying the LatAm orchestration median. dLocal's 0.67% is bottom-of-market, which is single-acquirer pricing territory \u2014 a different product, not a better deal."
+    }
   }
 }

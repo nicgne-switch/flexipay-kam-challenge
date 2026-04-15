@@ -41,7 +41,7 @@ const fmtSigned = v => (v >= 0 ? '+' : '−') + fmtMoneyFull(Math.abs(v));
 let MODEL = null;
 let activeTab = 'overview';
 let activeScenario = 1;
-let chartsInit = { qbr: false, expansion: false, retention: false };
+let chartsInit = { qbr: false, expansion: false, retention: false, situation: false };
 let brChart, arChart;
 let objState = { category: 'All', stakeholder: 'All', activeId: null };
 
@@ -74,7 +74,7 @@ function initTabs() {
 }
 
 function setTab(tab) {
-  const valid = ['overview','qbr','expansion','retention','memo','warroom'];
+  const valid = ['overview','situation','qbr','expansion','retention','memo','warroom'];
   if (!valid.includes(tab)) tab = 'overview';
   activeTab = tab;
 
@@ -90,12 +90,212 @@ function setTab(tab) {
   url.searchParams.set('tab', tab);
   history.replaceState(null, '', url.toString());
 
-  // Lazy init charts — only when the tab is first opened
-  if (tab === 'qbr' && !chartsInit.qbr) { initQBRCharts(); chartsInit.qbr = true; }
+  // Lazy init per tab
+  if (tab === 'situation' && !chartsInit.situation) { initSituation(); chartsInit.situation = true; }
+  if (tab === 'qbr' && !chartsInit.qbr) { initQBRCharts(); initQBREnrichments(); chartsInit.qbr = true; }
   if (tab === 'expansion' && !chartsInit.expansion) { initExpansionCharts(); chartsInit.expansion = true; }
   if (tab === 'retention' && !chartsInit.retention) { initWaterfallChart(); chartsInit.retention = true; }
 
   window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// =========================================================
+// SITUATION TAB — render all strategic framework data
+// =========================================================
+function initSituation() {
+  const s = MODEL.situation;
+
+  // Executive brief
+  document.getElementById('execBrief').textContent = s.executive_brief;
+
+  // 4 forces
+  document.getElementById('forcesGrid').innerHTML = s.four_forces.map(f => `
+    <div class="force-card">
+      <div class="force-head">
+        <div class="force-name">${f.name}</div>
+        <div class="force-owner">${f.owner}</div>
+      </div>
+      <div class="force-data">${f.data}</div>
+      <div class="force-pull" data-label="PULL">${f.pull}</div>
+      <div class="force-tension" data-label="TENSION">${f.tension}</div>
+    </div>
+  `).join('');
+
+  // MEDDPICC
+  document.getElementById('meddpiccGrid').innerHTML = s.meddpicc.map(m => `
+    <div class="meddpicc-row">
+      <div class="meddpicc-letter">${m.letter}</div>
+      <div class="meddpicc-label">${m.label}</div>
+      <div class="meddpicc-filled">${m.filled}</div>
+    </div>
+  `).join('');
+
+  // Stakeholder matrix
+  const plot = document.getElementById('matrixPlot');
+  plot.innerHTML = `
+    <div class="matrix-axis-x">Interest →</div>
+    <div class="matrix-axis-y">Power →</div>
+    <div class="matrix-quadrant matrix-q-tl">Keep satisfied</div>
+    <div class="matrix-quadrant matrix-q-tr">Manage closely</div>
+    <div class="matrix-quadrant matrix-q-bl">Monitor</div>
+    <div class="matrix-quadrant matrix-q-br">Keep informed</div>
+  ` + s.stakeholder_matrix.map(st => `
+    <div class="matrix-point ${st.strategy.toLowerCase()}" style="left: ${st.position.x}%; bottom: ${st.position.y}%;">
+      <div class="mp-name">${st.name.split(' ')[0]}</div>
+      <div class="mp-role">${st.role.split(' ')[0]}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('matrixLegend').innerHTML = s.stakeholder_matrix.map(st => `
+    <div class="legend-card ${st.strategy.toLowerCase()}">
+      <div class="legend-head">
+        <div class="legend-name">${st.name} · <span style="color: var(--text-mute); font-weight: 500;">${st.role}</span></div>
+        <div class="legend-strategy">${st.strategy}</div>
+      </div>
+      <div class="legend-tactic">${st.tactic}</div>
+    </div>
+  `).join('');
+
+  // Value pyramid
+  document.getElementById('valuePyramid').innerHTML = s.value_pyramid.map((v, i) => `
+    <div class="pyramid-level l${v.rank}">
+      <div class="pyramid-header">
+        <div class="pyramid-tier">TIER ${v.rank}</div>
+        <div class="pyramid-level-name">${v.level}</div>
+        <div class="pyramid-wins ${v.yuno_wins ? 'yes' : 'no'}">${v.yuno_wins ? '✓ Yuno wins' : 'dLocal competes'}</div>
+      </div>
+      <div class="pyramid-vs">
+        <strong>Yuno</strong>
+        ${v.yuno_value}
+      </div>
+      <div class="pyramid-vs">
+        <strong>dLocal</strong>
+        ${v.dlocal_value}
+        ${v.note ? `<div style="margin-top:10px;padding:10px;background:var(--blue-bg);border-radius:4px;font-size:11px;color:var(--blue-700);"><strong style="display:block;color:var(--blue);text-transform:uppercase;font-size:9px;letter-spacing:0.08em;margin-bottom:4px;">Implication</strong>${v.note}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  // Key principles
+  document.getElementById('principlesGrid').innerHTML = s.key_principles.map((p, i) => `
+    <div class="principle-card">
+      <div class="principle-num">PRINCIPLE ${String(i+1).padStart(2, '0')}</div>
+      <div class="principle-title">${p.principle}</div>
+      <div class="principle-explanation">${p.explanation}</div>
+    </div>
+  `).join('');
+
+  // Risk register
+  const scoreClass = score => score >= 10 ? 'critical' : score >= 7 ? 'high' : score >= 5 ? 'med' : 'low';
+  document.getElementById('riskTable').innerHTML = `
+    <thead>
+      <tr>
+        <th style="width:60px;">ID</th>
+        <th>Risk</th>
+        <th style="width:90px;">Prob.</th>
+        <th style="width:90px;">Impact</th>
+        <th style="width:70px;">Score</th>
+        <th>Mitigation</th>
+        <th style="width:140px;">Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${s.risk_register.map(r => `
+        <tr class="risk-row">
+          <td><span class="risk-id">${r.id}</span></td>
+          <td><strong>${r.risk}</strong></td>
+          <td>${r.probability}</td>
+          <td>${r.impact}</td>
+          <td><span class="risk-score ${scoreClass(r.score)}">${r.score}</span></td>
+          <td>${r.mitigation}</td>
+          <td>${r.owner}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+}
+
+// =========================================================
+// QBR ENRICHMENTS — Jan dip, methods, NPS, tickets, cost
+// =========================================================
+function initQBREnrichments() {
+  const q = MODEL.qbr_extended;
+
+  // Jan dip evidence
+  document.getElementById('janDipEvidence').innerHTML = q.january_dip_analysis.evidence.map(e => `<li>${e}</li>`).join('');
+
+  // Payment method grid
+  document.getElementById('methodGrid').innerHTML = q.payment_method_efficiency.map(m => `
+    <div class="method-card">
+      <div class="method-market">${m.market}</div>
+      <div class="method-name">${m.method}</div>
+      <div class="method-approval">${m.approval}%</div>
+      <div class="method-insight">${m.insight}</div>
+    </div>
+  `).join('');
+
+  // NPS verbatim
+  document.getElementById('npsQuote').textContent = '"' + q.nps_verbatim.verbatim + '"';
+  document.getElementById('npsDecode').innerHTML = q.nps_verbatim.decoded.map(d => `
+    <div class="decode-row">
+      <div class="decode-said">"${d.they_said}"</div>
+      <div class="decode-means">${d.what_that_means}</div>
+    </div>
+  `).join('');
+
+  // Support ticket chart
+  document.getElementById('ticketInsight').textContent = q.support_ticket_analysis.insight;
+  new Chart(document.getElementById('ticketChart'), {
+    type: 'bar',
+    data: {
+      labels: q.support_ticket_analysis.data.map(d => d.month),
+      datasets: [
+        {
+          label: 'Critical',
+          data: q.support_ticket_analysis.data.map(d => d.critical),
+          backgroundColor: C.danger,
+          borderRadius: 3,
+          stack: 'a',
+        },
+        {
+          label: 'Total tickets',
+          data: q.support_ticket_analysis.data.map(d => d.total - d.critical),
+          backgroundColor: C.blue,
+          borderRadius: 3,
+          stack: 'a',
+        },
+      ],
+    },
+    options: baseOpts({
+      stacked: true,
+      yTicks: v => v,
+      tooltipLabel: ctx => ctx.dataset.label + ': ' + ctx.parsed.y,
+    }),
+  });
+
+  // Cost benchmark visual
+  const cost = q.cost_efficiency;
+  const [min, max] = cost.benchmark_range;
+  const pct = v => ((v - min) / (max - min)) * 100;
+  document.getElementById('costBenchmark').innerHTML = `
+    <div class="cost-range">
+      <div class="cost-marker flexipay" style="left: ${pct(cost.flexipay_effective_take)}%;">
+        <div class="cost-marker-dot"></div>
+        <div class="cost-marker-label">FlexiPay today · ${cost.flexipay_effective_take}%</div>
+        <div class="cost-marker-sub">Median LatAm orchestration</div>
+      </div>
+      <div class="cost-marker dlocal" style="left: ${Math.max(0, pct(cost.dlocal_proposed))}%;">
+        <div class="cost-marker-dot"></div>
+        <div class="cost-marker-label" style="top: -42px;">dLocal · ${cost.dlocal_proposed}%</div>
+        <div class="cost-marker-sub" style="top: -60px;">Bottom of market · single-acquirer territory</div>
+      </div>
+    </div>
+    <div class="cost-scale">
+      <span>${min}% (floor)</span>
+      <span>0.82% (median)</span>
+      <span>${max}% (ceiling)</span>
+    </div>
+  `;
 }
 
 // =========================================================
