@@ -607,6 +607,27 @@ function initConcessionCalculator() {
     btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
   });
 
+  // Sync button — push current state to localStorage so client deck,
+  // formal proposal, and internal approval memo all read the latest terms.
+  const syncBtn = document.getElementById('syncBtn');
+  if (syncBtn) {
+    syncBtn.addEventListener('click', () => {
+      const terms = {
+        cardRate: parseFloat(cardEl.value),
+        pixRate: parseFloat(pixEl.value),
+        platformFee: parseFloat(platformEl.value),
+        timestamp: Date.now(),
+      };
+      localStorage.setItem('flexipay_deal_terms', JSON.stringify(terms));
+
+      // Visual feedback
+      const status = document.getElementById('syncStatus');
+      status.textContent = '✓ Synced';
+      status.classList.add('show');
+      setTimeout(() => status.classList.remove('show'), 2800);
+    });
+  }
+
   recalc();
 }
 

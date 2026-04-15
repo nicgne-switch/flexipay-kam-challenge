@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlexiPay — Renewal Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #282A30;
+    --navy-soft: #4B5563;
+    --blue-700: #0052A8;
+    --blue: #0066CC;
+    --blue-soft: rgba(0, 102, 204, 0.06);
+    --bg: #FFFFFF;
+    --bg-subtle: #F7F7F8;
+    --border: #E5E7EB;
+    --border-strong: #D1D5DB;
+    --text: #282A30;
+    --dim: #6B7280;
+    --mute: #9CA3AF;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg-subtle);
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 64px 72px;
+    box-shadow: 0 2px 20px rgba(40, 42, 48, 0.06);
+  }
+
+  .controls {
+    max-width: 820px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .controls .label {
+    font-size: 11px;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .controls button, .controls a {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .controls button:hover, .controls a:hover { background: var(--navy-soft); }
+  .controls .back { background: transparent; color: var(--navy); border: 1px solid var(--border-strong); }
+  .controls .back:hover { background: var(--bg-subtle); }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 32px;
+  }
+  .header .brand {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .header .brand .dot { color: var(--blue); margin: 0 4px; font-weight: 500; }
+  .header .brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .header .meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--dim);
+  }
+  .header .meta strong { color: var(--navy); display: block; margin-bottom: 2px; }
+
+  .title-block {
+    margin-bottom: 36px;
+  }
+  .title-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 8px 0;
+    line-height: 1.15;
+    color: var(--navy);
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--dim);
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p { margin: 0 0 12px 0; color: var(--text); line-height: 1.65; }
+
+  .intro-para { font-size: 14px; line-height: 1.7; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 10px;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    width: 38%;
+  }
+  table td .value {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--blue-700);
+    font-weight: 600;
+  }
+
+  .commitments {
+    background: var(--blue-soft);
+    border: 1px solid rgba(0, 102, 204, 0.15);
+    border-left: 3px solid var(--blue);
+    border-radius: 6px;
+    padding: 20px 22px;
+  }
+  .commitments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .commitments li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    font-size: 13px;
+    line-height: 1.55;
+    border-bottom: 1px solid rgba(0, 102, 204, 0.12);
+  }
+  .commitments li:last-child { border-bottom: none; }
+  .commitments li::before {
+    content: "✓";
+    position: absolute;
+    left: 0; top: 8px;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .sla-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .sla-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 14px;
+    text-align: center;
+  }
+  .sla-card .market {
+    font-size: 10px;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .sla-card .floor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .signature-block {
+    margin-top: 50px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 30px;
+  }
+  .sig-col {
+    padding-top: 40px;
+    border-top: 1px solid var(--navy);
+  }
+  .sig-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .sig-title {
+    font-size: 11px;
+    color: var(--mute);
+    margin-top: 2px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--mute);
+    line-height: 1.6;
+  }
+
+  .sync-badge {
+    display: inline-block;
+    font-size: 10px;
+    background: var(--blue-soft);
+    color: var(--blue-700);
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .page { box-shadow: none; border: none; padding: 40px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <span class="label">Renewal Proposal · <span id="statusLabel">Default terms</span></span>
+  <div style="display: flex; gap: 10px;">
+    <a href="index.html?tab=warroom" class="back">← Back to War Room</a>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="brand">Yuno<span class="dot">×</span>FlexiPay</div>
+      <div class="brand-sub">Payment Orchestration Partnership</div>
+    </div>
+    <div class="meta">
+      <strong>RENEWAL PROPOSAL</strong>
+      Prepared: April 15, 2026<br>
+      Valid through: May 15, 2026<br>
+      Reference: FLEX-2025-RNW-001
+    </div>
+  </div>
+
+  <div class="title-block">
+    <div class="title-eyebrow">Partnership Renewal · 18-month term</div>
+    <h1>FlexiPay × Yuno</h1>
+    <div class="subtitle">A proposal structured around payment performance outcomes</div>
+  </div>
+
+  <div class="section">
+    <h2>To</h2>
+    <p style="font-weight: 600; color: var(--navy); margin-bottom: 2px;">FlexiPay Leadership Team</p>
+    <p style="font-size: 12px; color: var(--dim); margin: 0;">
+      Daniela Ramos · Head of Payments<br>
+      Carlos Mendoza · Chief Financial Officer<br>
+      Sofia Alvarez · Chief Executive Officer
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Executive summary</h2>
+    <p class="intro-para">
+      Yuno is pleased to propose the renewal of our partnership with FlexiPay for an additional
+      eighteen-month term, with expanded commercial and operational commitments around
+      payment performance, Brazilian market expansion, and dedicated account support. This
+      proposal is structured around <strong>accountable outcomes</strong> — Yuno commits to
+      specific approval-rate floors by market, with service credits if we miss them.
+    </p>
+    <p class="intro-para">
+      Over the past eighteen months, Yuno has processed <strong>$107.1M of FlexiPay's TPV</strong>
+      across Mexico, Colombia, Chile, and Peru with zero platform outages. In this renewal, we
+      want to go further: unlock Peru and Colombia routing performance, fast-track Brazil to
+      production in three weeks, and formalize service commitments that previously lived in email.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Commercial terms</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Proposed terms</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Card take rate (credit &amp; debit)</td>
+          <td><span class="value" id="pCardRate">0.85%</span> of successful card TPV</td>
+        </tr>
+        <tr>
+          <td>Local methods take rate</td>
+          <td><span class="value">0.65%</span> of successful TPV (OXXO, PSE, Webpay, SPEI)</td>
+        </tr>
+        <tr>
+          <td>PIX take rate (Brazil)</td>
+          <td><span class="value" id="pPixRate">0.55%</span> · with 24-month Brazil commitment</td>
+        </tr>
+        <tr>
+          <td>Monthly platform fee</td>
+          <td><span class="value" id="pPlatformFee">$2,000/month</span></td>
+        </tr>
+        <tr>
+          <td>Contract length</td>
+          <td><span class="value">18 months</span> · auto-renewing with 60 days notice</td>
+        </tr>
+        <tr>
+          <td>Minimum TPV commitment</td>
+          <td><span class="value">None</span> · pricing review only if TPV drops &gt;25% for 3 consecutive months</td>
+        </tr>
+        <tr>
+          <td>Payment terms</td>
+          <td>Net 30</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Performance SLA · approval rate floors</h2>
+    <p>Yuno commits to the following blended card approval rate floors, measured on rolling 90-day windows. If Yuno fails to meet a market-specific floor, service credits apply equal to 10% of that market's take-rate revenue for the affected month.</p>
+    <div class="sla-grid">
+      <div class="sla-card">
+        <div class="market">Mexico</div>
+        <div class="floor">82%</div>
+      </div>
+      <div class="sla-card">
+        <div class="market">Colombia</div>
+        <div class="floor">80%</div>
+      </div>
+      <div class="sla-card">
+        <div class="market">Chile</div>
+        <div class="floor">82%</div>
+      </div>
+      <div class="sla-card">
+        <div class="market">Peru</div>
+        <div class="floor">75%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Partnership commitments · first 90 days</h2>
+    <div class="commitments">
+      <ul>
+        <li><strong>Dedicated Slack channel with Yuno engineering</strong> — live by end of Week 1, regardless of contract timeline</li>
+        <li><strong>Named Customer Success Manager</strong> with weekly syncs (not bi-weekly) and 4-hour response SLA</li>
+        <li><strong>Brazil fast-track</strong> — 40 hours of Solutions Engineering + 20 hours of CSM onboarding, at no additional cost</li>
+        <li><strong>Approval-rate sprint</strong> — Colombia routing refresh and Peru third-acquirer integration within 30 days</li>
+        <li><strong>Monthly performance reports</strong> — baseline metrics locked Week 1, improvement tracked against SLA floors</li>
+        <li><strong>Quarterly Business Reviews</strong> — structured, metrics-driven, always with forward-looking strategic recommendations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Brazil fast-track timeline</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Milestone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Week 1</td><td>Kickoff · PIX and Boleto enablement on existing Yuno instance · Solutions Engineering onsite</td></tr>
+        <tr><td>Week 2</td><td>Brazilian local acquirer onboarding (2 acquirers for redundancy) · sandbox testing</td></tr>
+        <tr><td>Week 3</td><td>Production rollout with gradual traffic ramp · dedicated Yuno on-call for 14 days · full go-live</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Next steps</h2>
+    <p>We propose the following to move forward:</p>
+    <p>
+      1. <strong>Letter of Intent</strong> for Brazil fast-track, countersigned within 7 days. This unblocks Yuno Solutions Engineering to begin kickoff regardless of final contract signing.<br>
+      2. <strong>Renewal agreement</strong> countersigned within 30 days, effective March 15, 2025.<br>
+      3. <strong>Executive sponsorship call</strong> — Yuno CEO and FlexiPay CEO, within 14 days, to align strategic partnership for 2025.
+    </p>
+  </div>
+
+  <div class="signature-block">
+    <h2>Acceptance</h2>
+    <p style="font-size: 12px; color: var(--dim);">This proposal is valid for 30 days from the date of preparation. Acceptance may be indicated by signature below or by written confirmation to the named representative.</p>
+    <div class="sig-grid">
+      <div class="sig-col">
+        <div class="sig-name">For Yuno</div>
+        <div class="sig-title">Nicolas · Key Account Manager</div>
+      </div>
+      <div class="sig-col">
+        <div class="sig-name">For FlexiPay</div>
+        <div class="sig-title">Authorized representative</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    This proposal is subject to Yuno legal review and standard terms of service.
+    Governing law and dispute resolution as per the Master Services Agreement previously executed between the parties, dated July 1, 2023.
+    This document is confidential and intended solely for FlexiPay leadership.
+  </div>
+
+</div>
+
+<script>
+  function applySyncedTerms() {
+    try {
+      const synced = localStorage.getItem('flexipay_deal_terms');
+      if (!synced) return;
+      const t = JSON.parse(synced);
+
+      document.getElementById('pCardRate').textContent = t.cardRate.toFixed(2) + '%';
+      document.getElementById('pPixRate').textContent = t.pixRate.toFixed(2) + '%';
+      document.getElementById('pPlatformFee').textContent = t.platformFee === 0 ? 'Waived (partnership investment)' : '$' + t.platformFee.toLocaleString() + '/month';
+
+      document.getElementById('statusLabel').innerHTML = 'Live from War Room · synced ' + new Date(t.timestamp).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) + ' <span class="sync-badge">SYNCED</span>';
+    } catch (e) {
+      console.warn('No synced terms available');
+    }
+  }
+
+  applySyncedTerms();
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'flexipay_deal_terms') applySyncedTerms();
+  });
+</script>
+
+</body>
+</html>

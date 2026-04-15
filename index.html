@@ -46,7 +46,7 @@
         <span class="tab-label">War Room</span>
       </button>
     </nav>
-    <a href="slides.html" class="slides-cta">Slides →</a>
+    <a href="slides.html" class="slides-cta">Client QBR →</a>
   </div>
 </header>
 
@@ -127,7 +127,7 @@
       <div class="summary-card highlight">
         <div class="summary-num">06</div>
         <h4>War Room</h4>
-        <p>Live decision support for the QBR meeting. 15 objection responses, Plan B simulator, executive scripts, concession calculator.</p>
+        <p>The KAM operating system. 15 objections, Plan B simulator, QBR scripts, and a live Concession Calculator that generates three outputs: Client QBR, Formal Proposal, and VP approval memo — all from one backend.</p>
         <button class="card-link" data-nav="warroom">Enter War Room →</button>
       </div>
     </div>
@@ -674,14 +674,59 @@
         <button class="calc-preset" data-preset="aggressive">Aggressive match</button>
         <button class="calc-preset" data-preset="dlocal">Mirror dLocal</button>
       </div>
+
+      <!-- ACTION BUTTONS — sync + generate outputs for 3 audiences -->
+      <div class="calc-actions">
+        <div class="calc-actions-head">
+          <div class="calc-actions-title">When you're ready, push these terms to the three audiences</div>
+          <div class="calc-actions-sub">One backend. Three outputs. Zero copy-paste errors.</div>
+        </div>
+        <div class="calc-actions-grid">
+          <button class="action-btn sync" id="syncBtn">
+            <div class="action-icon">↻</div>
+            <div class="action-body">
+              <div class="action-label">Sync to all outputs</div>
+              <div class="action-sub">Pushes current terms to Client QBR, FlexiPay Proposal, and VP Memo</div>
+            </div>
+            <div class="action-status" id="syncStatus"></div>
+          </button>
+          <a class="action-btn" href="slides.html" target="_blank" rel="noopener">
+            <div class="action-icon">📊</div>
+            <div class="action-body">
+              <div class="action-label">Open Client QBR</div>
+              <div class="action-sub">What FlexiPay sees in the meeting room</div>
+            </div>
+            <div class="action-audience">External · FlexiPay</div>
+          </a>
+          <a class="action-btn" href="proposal.html" target="_blank" rel="noopener">
+            <div class="action-icon">📄</div>
+            <div class="action-body">
+              <div class="action-label">Generate Renewal Proposal</div>
+              <div class="action-sub">Formal, signable contract document</div>
+            </div>
+            <div class="action-audience">External · FlexiPay</div>
+          </a>
+          <a class="action-btn internal" href="approval.html" target="_blank" rel="noopener">
+            <div class="action-icon">🔒</div>
+            <div class="action-body">
+              <div class="action-label">Internal Approval Request</div>
+              <div class="action-sub">Memo to VP · includes mailto template</div>
+            </div>
+            <div class="action-audience">Internal · Yuno VP</div>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="war-footnote">
-      <strong>How this works.</strong> All four modules are pre-computed from the same financial model
-      in <code>data/model.json</code> — the same source of truth that powers the dashboard and slides.
-      No live LLM calls, no API keys, no demo fragility. The AI work happened upstream: modeling,
-      stress-testing, and drafting objection responses that cite exact numbers consistent across the
-      whole package. This is what a KAM operating system looks like.
+      <strong>One backend. Three audiences.</strong> The War Room is the KAM's internal cockpit.
+      Everything here — the objection bank, the Plan B simulator, the QBR scripts, the Concession Calculator —
+      is <em>internal tooling</em> that never gets shown to the client. What the client (FlexiPay) sees is the
+      <strong>Client QBR deck</strong>, and what goes to the Yuno VP is the <strong>Internal Approval Request</strong>.
+      The Concession Calculator is the pivot point: move the sliders, click Sync, and the client deck, the formal
+      renewal proposal, and the VP memo all update automatically. One source of truth in <code>data/model.json</code>,
+      three different outputs for three different audiences. No copy-paste errors. This is what a KAM operating
+      system looks like.
     </div>
   </div>
 </section>
