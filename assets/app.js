@@ -597,8 +597,10 @@ function initConcessionCalculator() {
   const cardEl = document.getElementById('cardRate');
   const pixEl = document.getElementById('pixRate');
   const platformEl = document.getElementById('platformFee');
+  const icebergEl = document.getElementById('icebergToggle');
 
   [cardEl, pixEl, platformEl].forEach(el => el.addEventListener('input', recalc));
+  icebergEl.addEventListener('change', recalc);
 
   // Presets
   document.querySelectorAll('.calc-preset').forEach(btn => {
@@ -726,6 +728,110 @@ function recalc() {
       No concessions applied. Yuno is ${fmtMoneyFull(Math.abs(Math.round(vsDlocal)))}/yr more expensive than dLocal on paper,
       but that gap is justified by $1.13M of switching costs and $951K of expansion upside.
     `;
+  }
+
+  // === THE ICEBERG ===
+  updateIceberg(currentYunoRev, dlocalAnnual);
+}
+
+// =========================================================
+// ICEBERG — True cost comparison with toggle
+// =========================================================
+function updateIceberg(yunoCost, dlocalPrice) {
+  const toggle = document.getElementById('icebergToggle');
+  const showHidden = toggle.checked;
+
+  // Hidden costs are structural — they don't depend on slider position.
+  // They are the cost of the ACT of migrating.
+  const HIDDEN_COSTS = MODEL.competitive.total_switching; // $1,135,620
+
+  const dlocalTrueCost = showHidden ? dlocalPrice + HIDDEN_COSTS : dlocalPrice;
+  const maxCost = Math.max(yunoCost, dlocalTrueCost);
+
+  // Bar widths (the larger bar is 95% of container)
+  const yunoWidth = (yunoCost / maxCost) * 95;
+  const dlocalWidth = (dlocalTrueCost / maxCost) * 95;
+
+  // Yuno bar
+  const yunoBar = document.getElementById('yunoBar');
+  yunoBar.style.width = yunoWidth + '%';
+  document.getElementById('yunoTotalCost').textContent = fmtMoneyFull(Math.round(yunoCost));
+  document.getElementById('yunoBreakdown').textContent = 'Annual pricing (all-in)';
+
+  // dLocal bar (two segments)
+  const dlocalBar = document.getElementById('dlocalBar');
+  dlocalBar.style.width = dlocalWidth + '%';
+
+  const priceSeg = document.getElementById('dlocalPriceSegment');
+  const hiddenSeg = document.getElementById('dlocalHiddenSegment');
+
+  if (showHidden) {
+    // Both segments visible, proportionally sized
+    const pricePortion = (dlocalPrice / dlocalTrueCost) * 100;
+    const hiddenPortion = (HIDDEN_COSTS / dlocalTrueCost) * 100;
+    priceSeg.style.width = pricePortion + '%';
+    priceSeg.style.padding = '0 14px';
+    priceSeg.style.borderLeft = '';
+    hiddenSeg.style.width = hiddenPortion + '%';
+    hiddenSeg.style.padding = '0 14px';
+    hiddenSeg.style.borderLeft = '2px solid rgba(255,255,255,0.4)';
+    document.getElementById('dlocalBreakdown').textContent = `Pricing + $${(HIDDEN_COSTS/1e6).toFixed(2)}M hidden`;
+  } else {
+    // Hidden segment collapses to zero
+    priceSeg.style.width = '100%';
+    priceSeg.style.padding = '0 14px';
+    hiddenSeg.style.width = '0%';
+    hiddenSeg.style.padding = '0';
+    hiddenSeg.style.borderLeft = '0';
+    document.getElementById('dlocalBreakdown').textContent = 'Headline price only';
+  }
+  document.getElementById('dlocalPriceValue').textContent = '$' + (dlocalPrice/1e6).toFixed(2) + 'M';
+
+  // Verdict
+  const verdict = document.getElementById('icebergVerdict');
+  const delta = yunoCost - dlocalTrueCost;
+  const deltaEl = document.getElementById('icebergDelta');
+
+  if (delta < 0) {
+    // Yuno wins (cheaper all-in)
+    verdict.classList.remove('danger-mode');
+    deltaEl.textContent = fmtMoneyFull(Math.abs(Math.round(delta)));
+    verdict.querySelector('.ice-winner-icon').textContent = '✓';
+    if (showHidden) {
+      verdict.querySelector('.ice-winner-text').innerHTML = `
+        <strong>Yuno wins by <span id="icebergDelta">${fmtMoneyFull(Math.abs(Math.round(delta)))}</span>.</strong>
+        dLocal's ${fmtMoneyFull(Math.round(yunoCost - dlocalPrice))} headline savings are consumed by $24K re-integration engineering, $337K Brazil delay, $248K approval regression, $180K tokenization churn, and $345K commitment overage. <strong>The iceberg lives below the waterline.</strong>
+      `;
+    } else {
+      verdict.querySelector('.ice-winner-text').innerHTML = `
+        <strong>Yuno wins by <span id="icebergDelta">${fmtMoneyFull(Math.abs(Math.round(delta)))}</span> on headline.</strong>
+        Your offer already undercuts dLocal before hidden costs. Add them back (toggle on) and the margin widens.
+      `;
+    }
+  } else if (delta > 0) {
+    // Yuno is more expensive
+    deltaEl.textContent = fmtMoneyFull(Math.round(delta));
+    if (showHidden) {
+      // Hidden costs included but Yuno still more expensive — this shouldn't happen at defaults, but handle it
+      verdict.classList.remove('danger-mode');
+      verdict.querySelector('.ice-winner-icon').textContent = '⚠';
+      verdict.querySelector('.ice-winner-text').innerHTML = `
+        <strong>Close call.</strong>
+        Yuno is ${fmtMoneyFull(Math.round(delta))}/yr more expensive even with hidden costs included. Your concessions may have gone too far — expansion upside ($951K) still wins overall, but the headline story weakens.
+      `;
+    } else {
+      verdict.classList.add('danger-mode');
+      verdict.querySelector('.ice-winner-icon').textContent = '⚠';
+      verdict.querySelector('.ice-winner-text').innerHTML = `
+        <strong>This is what Carlos sees without the iceberg.</strong>
+        On pricing alone, Yuno is ${fmtMoneyFull(Math.round(delta))}/yr more expensive than dLocal. <strong>Toggle on the hidden costs</strong> to show the real comparison — $1.13M of switching costs that Carlos's spreadsheet doesn't have.
+      `;
+    }
+  } else {
+    // Parity
+    deltaEl.textContent = '$0';
+    verdict.classList.remove('danger-mode');
+    verdict.querySelector('.ice-winner-text').innerHTML = `<strong>Parity.</strong> Yuno and dLocal cost the same on this basis.`;
   }
 }
 

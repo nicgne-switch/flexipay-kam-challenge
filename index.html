@@ -596,6 +596,61 @@
             </div>
           </div>
 
+          <!-- THE ICEBERG — true cost comparison -->
+          <div class="iceberg">
+            <div class="iceberg-head">
+              <div>
+                <div class="iceberg-title">True Year-1 cost to FlexiPay</div>
+                <div class="iceberg-sub">What CFOs see on paper · what it really costs</div>
+              </div>
+              <label class="iceberg-toggle">
+                <input type="checkbox" id="icebergToggle" checked>
+                <span class="toggle-track"><span class="toggle-dot"></span></span>
+                <span class="toggle-label">Include hidden switching costs</span>
+              </label>
+            </div>
+
+            <div class="iceberg-bars">
+              <div class="ice-row">
+                <div class="ice-label">
+                  <div class="ice-vendor">Yuno</div>
+                  <div class="ice-breakdown" id="yunoBreakdown">Annual pricing only</div>
+                </div>
+                <div class="ice-bar-wrap">
+                  <div class="ice-bar yuno" id="yunoBar" style="width: 55%">
+                    <span class="ice-bar-value" id="yunoTotalCost">$2,087,400</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ice-row">
+                <div class="ice-label">
+                  <div class="ice-vendor">dLocal</div>
+                  <div class="ice-breakdown" id="dlocalBreakdown">Pricing + $1.13M hidden</div>
+                </div>
+                <div class="ice-bar-wrap">
+                  <div class="ice-bar dlocal" id="dlocalBar" style="width: 74%">
+                    <span class="ice-bar-segment visible" id="dlocalPriceSegment" style="width: 60%">
+                      <span class="seg-label">Price</span>
+                      <span class="seg-value" id="dlocalPriceValue">$1.66M</span>
+                    </span>
+                    <span class="ice-bar-segment hidden-cost" id="dlocalHiddenSegment" style="width: 40%">
+                      <span class="seg-label">Hidden costs</span>
+                      <span class="seg-value">+$1.14M</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="iceberg-verdict" id="icebergVerdict">
+              <div class="ice-winner-icon">✓</div>
+              <div class="ice-winner-text">
+                <strong>Yuno wins by <span id="icebergDelta">$707,700</span>.</strong>
+                dLocal's $427K headline savings are consumed by $24K re-integration engineering, $337K Brazil delay, $248K approval regression, $180K tokenization churn, and $345K commitment overage. The iceberg lives below the waterline.
+              </div>
+            </div>
+          </div>
+
           <div class="calc-verdict" id="calcVerdict">
             <div class="verdict-icon">○</div>
             <div class="verdict-text">

@@ -1306,6 +1306,214 @@ canvas { max-height: 300px; }
   line-height: 1.45;
 }
 
+/* ===== THE ICEBERG — true cost comparison ===== */
+.iceberg {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.iceberg-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.iceberg-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 3px;
+}
+.iceberg-sub {
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+.iceberg-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.iceberg-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.toggle-track {
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background: var(--border-strong);
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.2s;
+}
+.toggle-dot {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.iceberg-toggle input:checked ~ .toggle-track {
+  background: var(--blue);
+}
+.iceberg-toggle input:checked ~ .toggle-track .toggle-dot {
+  transform: translateX(16px);
+}
+.toggle-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.iceberg-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.ice-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.ice-label {
+  text-align: right;
+}
+.ice-vendor {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.ice-breakdown {
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+.ice-bar-wrap {
+  height: 44px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.ice-bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.3, 1);
+  border-radius: 6px;
+}
+.ice-bar.yuno {
+  background: linear-gradient(90deg, var(--blue-700) 0%, var(--blue) 100%);
+  padding: 0 14px;
+  color: #FFFFFF;
+}
+.ice-bar.yuno .ice-bar-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: auto;
+  color: #FFFFFF;
+}
+.ice-bar.dlocal {
+  display: flex;
+  padding: 0;
+}
+.ice-bar-segment {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 14px;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.ice-bar-segment.visible {
+  background: var(--navy-soft);
+  color: #FFFFFF;
+  border-radius: 6px 0 0 6px;
+}
+.ice-bar-segment.hidden-cost {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--danger),
+    var(--danger) 8px,
+    #8A2626 8px,
+    #8A2626 16px
+  );
+  color: #FFFFFF;
+  border-radius: 0 6px 6px 0;
+  border-left: 2px solid rgba(255,255,255,0.4);
+}
+.ice-bar-segment .seg-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.ice-bar-segment .seg-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+.ice-bar-segment.hidden.fade-out {
+  width: 0 !important;
+  padding: 0 !important;
+  border-left: 0 !important;
+}
+
+.iceberg-verdict {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--blue-bg);
+  border: 1px solid rgba(0, 102, 204, 0.2);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+.iceberg-verdict.danger-mode {
+  background: var(--danger-bg);
+  border: 1px solid rgba(155, 44, 44, 0.25);
+  border-left: 3px solid var(--danger);
+}
+.ice-winner-icon {
+  font-size: 22px;
+  line-height: 1;
+  color: var(--blue);
+  font-weight: 700;
+  padding-top: 1px;
+}
+.iceberg-verdict.danger-mode .ice-winner-icon { color: var(--danger); }
+.ice-winner-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.ice-winner-text strong { color: var(--navy); }
+#icebergDelta {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--blue);
+}
+.iceberg-verdict.danger-mode #icebergDelta { color: var(--danger); }
+
 .calc-presets {
   display: flex;
   align-items: center;
