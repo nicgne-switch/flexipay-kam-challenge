@@ -510,6 +510,9 @@ function initExpansionCharts() {
     }),
   });
 
+  // Deep analysis blocks
+  initExpansionDeep();
+
   // Scenario tabs
   document.querySelectorAll('.scenario-tab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1069,6 +1072,189 @@ function updateIceberg(yunoCost, dlocalPrice) {
     deltaEl.textContent = '$0';
     verdict.classList.remove('danger-mode');
     verdict.querySelector('.ice-winner-text').innerHTML = `<strong>Parity.</strong> Yuno and dLocal cost the same on this basis.`;
+  }
+}
+
+// =========================================================
+// EXPANSION DEEP — render 5 analytical blocks
+// =========================================================
+function initExpansionDeep() {
+  const d = MODEL.expansion_deep;
+  if (!d) return;
+
+  // BLOQUE 1: Assumptions table
+  const at = document.getElementById('assumptionsTable');
+  if (at) {
+    at.innerHTML = `
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Conservative</th>
+          <th>Base</th>
+          <th>Aggressive</th>
+          <th>Rationale / Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${d.assumptions.map(a => `
+          <tr>
+            <td>${a.variable}</td>
+            <td>${a.conservative}</td>
+            <td>${a.base}</td>
+            <td>${a.aggressive}</td>
+            <td>${a.rationale}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+  }
+
+  // BLOQUE 2: Brazil context
+  const br = d.brazil_context;
+  const brHead = document.getElementById('brContextHeadline');
+  if (brHead) brHead.textContent = br.headline;
+  const brGrid = document.getElementById('brDataGrid');
+  if (brGrid) {
+    brGrid.innerHTML = br.data_points.map(dp => `
+      <div class="market-data-card">
+        <div class="mdc-metric">${dp.metric}</div>
+        <div class="mdc-value">${dp.value}</div>
+        <div class="mdc-source">${dp.source}</div>
+        <div class="mdc-relevance">${dp.relevance}</div>
+      </div>
+    `).join('');
+  }
+  const brMoat = document.getElementById('brMoat');
+  if (brMoat) brMoat.innerHTML = br.competitive_moat;
+
+  // BLOQUE 2B: Argentina context + risk factors
+  const ar = d.argentina_context;
+  const arHead = document.getElementById('arContextHeadline');
+  if (arHead) arHead.textContent = ar.headline;
+  const arGrid = document.getElementById('arDataGrid');
+  if (arGrid) {
+    arGrid.innerHTML = ar.data_points.map(dp => `
+      <div class="market-data-card">
+        <div class="mdc-metric">${dp.metric}</div>
+        <div class="mdc-value">${dp.value}</div>
+        <div class="mdc-source">${dp.source}</div>
+        <div class="mdc-relevance">${dp.relevance}</div>
+      </div>
+    `).join('');
+  }
+  const arRiskGrid = document.getElementById('arRiskGrid');
+  if (arRiskGrid) {
+    arRiskGrid.innerHTML = ar.risk_factors.map(rf => `
+      <div class="risk-factor-card">
+        <div class="rfc-risk">${rf.risk}</div>
+        <div class="rfc-impact">${rf.impact}</div>
+        <div class="rfc-mitigation">${rf.mitigation}</div>
+      </div>
+    `).join('');
+  }
+  const arStrat = document.getElementById('arStrategic');
+  if (arStrat) arStrat.textContent = ar.strategic_rationale;
+
+  // BLOQUE 3: Revenue decomposition
+  const dec = d.revenue_decomposition;
+  const decHead = document.getElementById('decompHeadline');
+  if (decHead) decHead.textContent = dec.headline;
+  const decBars = document.getElementById('decompBars');
+  if (decBars) {
+    const maxAmt = Math.max(...dec.components.map(c => c.amount));
+    decBars.innerHTML = dec.components.map((c, i) => `
+      <div class="decomp-row">
+        <div class="decomp-label">
+          <div class="decomp-source">${c.source}</div>
+          <div class="decomp-pct">${c.pct_of_total}% of total upside</div>
+        </div>
+        <div class="decomp-bar-track">
+          <div class="decomp-bar-fill ${i === 0 ? 'primary' : 'secondary'}" style="width: ${(c.amount / maxAmt) * 100}%;">
+          </div>
+        </div>
+        <div class="decomp-amount">${fmtMoneyFull(c.amount)}</div>
+      </div>
+      <div style="padding-left: 256px; margin-top: -6px; margin-bottom: 10px;">
+        <div class="decomp-explanation">${c.explanation}</div>
+      </div>
+    `).join('');
+  }
+  const decInsight = document.getElementById('decompInsight');
+  if (decInsight) decInsight.innerHTML = `<strong>${dec.key_insight}</strong>`;
+
+  // BLOQUE 4: Investment required
+  const inv = d.investment_required;
+  const invHead = document.getElementById('investHeadline');
+  if (invHead) invHead.textContent = inv.headline;
+
+  const invFlexiTable = document.getElementById('investFlexiTable');
+  if (invFlexiTable) {
+    invFlexiTable.innerHTML = inv.flexipay.map(it => `
+      <tr>
+        <td>
+          ${it.item}
+          <div class="note">${it.note}</div>
+        </td>
+        <td>
+          <div class="hours">${it.hours}</div>
+          <div style="font-size:12px; font-weight:600; color:var(--navy); margin-top:4px;">${it.cost}</div>
+        </td>
+      </tr>
+    `).join('');
+  }
+  const invFlexiTotal = document.getElementById('investFlexiTotal');
+  if (invFlexiTotal) invFlexiTotal.innerHTML = `<span>Total</span><span>${inv.flexipay_total.hours} · ${inv.flexipay_total.cost}</span>`;
+
+  const invYunoTable = document.getElementById('investYunoTable');
+  if (invYunoTable) {
+    invYunoTable.innerHTML = inv.yuno.map(it => `
+      <tr>
+        <td>
+          ${it.item}
+          <div class="note">${it.note}</div>
+        </td>
+        <td>
+          <div class="hours">${it.hours}</div>
+          <div style="font-size:12px; font-weight:600; color:var(--navy); margin-top:4px;">${it.cost}</div>
+        </td>
+      </tr>
+    `).join('');
+  }
+  const invYunoTotal = document.getElementById('investYunoTotal');
+  if (invYunoTotal) invYunoTotal.innerHTML = `<span>Total</span><span>${inv.yuno_total.hours} · ${inv.yuno_total.cost}</span>`;
+
+  const invWaiver = document.getElementById('investWaiver');
+  if (invWaiver) invWaiver.innerHTML = inv.yuno_waiver;
+
+  const invVs = document.getElementById('investVsDlocal');
+  if (invVs) {
+    const vs = inv.vs_dlocal;
+    invVs.innerHTML = `
+      <p><strong>${vs.headline}</strong></p>
+      <div class="vs-row">
+        <div class="vs-label">dLocal offers</div>
+        <div>${vs.dlocal_their_cost}</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-label">FlexiPay cost on dLocal</div>
+        <div><strong>${vs.dlocal_flexipay_cost}</strong> — full re-integration (new SDK, webhooks, tokens, reconciliation)</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-label">FlexiPay cost total (dLocal)</div>
+        <div><strong>${vs.dlocal_total_flexipay}</strong></div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-label">FlexiPay cost on Yuno</div>
+        <div><strong>${vs.yuno_flexipay_cost}</strong> — SDK extension only (not re-integration)</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-label">FlexiPay cost total (Yuno)</div>
+        <div><strong>${vs.yuno_total_flexipay}</strong></div>
+      </div>
+      <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);">
+        <strong>${vs.delta}</strong>
+      </div>
+    `;
   }
 }
 

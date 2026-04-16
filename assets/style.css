@@ -2458,6 +2458,363 @@ canvas { max-height: 300px; }
 }
 
 /* ============================================================
+   EXPANSION DEEP — assumptions, market, decomposition, investment
+   ============================================================ */
+.assumptions-table-wrap { overflow-x: auto; }
+.assumptions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.assumptions-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-strong);
+  font-size: 10px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+.assumptions-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.assumptions-table td:first-child {
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 160px;
+}
+.assumptions-table td:nth-child(2),
+.assumptions-table td:nth-child(3),
+.assumptions-table td:nth-child(4) {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--blue-700);
+  white-space: nowrap;
+  text-align: center;
+  min-width: 80px;
+}
+.assumptions-table td:last-child {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  min-width: 280px;
+}
+.assumptions-table tr:hover { background: var(--bg-subtle); }
+
+/* Market data grid */
+.market-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.market-data-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.mdc-metric {
+  font-size: 10px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.mdc-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.mdc-source {
+  font-size: 10px;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.mdc-relevance {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.market-moat {
+  background: var(--blue-bg);
+  border: 1px solid rgba(0, 102, 204, 0.15);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 18px 22px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.market-moat::before {
+  content: "COMPETITIVE MOAT";
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.market-moat strong { color: var(--navy); }
+
+/* Risk factors grid */
+.risk-factors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.risk-factor-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.rfc-risk {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.rfc-impact {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.rfc-impact::before {
+  content: "IMPACT · ";
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  font-weight: 700;
+}
+.rfc-mitigation {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.rfc-mitigation::before {
+  content: "MITIGATION · ";
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.ar-strategic {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy);
+  border-radius: 6px;
+  padding: 18px 22px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.ar-strategic::before {
+  content: "STRATEGIC RATIONALE";
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+/* Revenue decomposition bars */
+.decomp-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.decomp-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 100px;
+  gap: 16px;
+  align-items: center;
+}
+.decomp-label {
+  text-align: right;
+}
+.decomp-source {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.decomp-pct {
+  font-size: 10px;
+  color: var(--text-mute);
+  margin-top: 2px;
+}
+.decomp-bar-track {
+  height: 32px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.decomp-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  transition: width 0.4s;
+}
+.decomp-bar-fill.primary { background: var(--blue); }
+.decomp-bar-fill.secondary { background: var(--blue-300); }
+.decomp-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.decomp-insight {
+  background: var(--blue-bg);
+  border: 1px solid rgba(0, 102, 204, 0.15);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 16px 22px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.decomp-insight::before {
+  content: "KEY INSIGHT";
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.decomp-insight strong { color: var(--navy); }
+.decomp-explanation {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* Investment tables */
+.invest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.invest-col {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.invest-col-head {
+  background: var(--navy);
+  color: var(--text-inverse);
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.invest-col:nth-child(2) .invest-col-head { background: var(--blue); }
+.invest-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.invest-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.invest-table td:first-child {
+  font-weight: 600;
+  color: var(--navy);
+  width: 50%;
+}
+.invest-table .hours {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--blue-700);
+  font-size: 11px;
+}
+.invest-table .note {
+  font-size: 10.5px;
+  color: var(--text-mute);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.invest-total {
+  padding: 14px 18px;
+  background: var(--bg-elev);
+  border-top: 2px solid var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  justify-content: space-between;
+}
+.invest-col:nth-child(2) .invest-total { border-top-color: var(--blue); }
+.invest-waiver {
+  background: var(--blue-bg);
+  border: 1px solid rgba(0, 102, 204, 0.15);
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 16px 22px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.invest-waiver strong { color: var(--navy); }
+.invest-vs-dlocal {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.invest-vs-dlocal strong { color: var(--navy); font-weight: 700; }
+.invest-vs-dlocal .vs-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.invest-vs-dlocal .vs-row:last-child { border-bottom: none; }
+.invest-vs-dlocal .vs-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1080px) {
