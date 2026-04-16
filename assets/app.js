@@ -279,15 +279,15 @@ function initQBREnrichments() {
   const pct = v => ((v - min) / (max - min)) * 100;
   document.getElementById('costBenchmark').innerHTML = `
     <div class="cost-range">
+      <div class="cost-marker dlocal" style="left: ${Math.max(0, pct(cost.dlocal_proposed))}%;">
+        <div class="cost-marker-sub">Bottom of market · single-acquirer</div>
+        <div class="cost-marker-label">dLocal · ${cost.dlocal_proposed}%</div>
+        <div class="cost-marker-dot"></div>
+      </div>
       <div class="cost-marker flexipay" style="left: ${pct(cost.flexipay_effective_take)}%;">
         <div class="cost-marker-dot"></div>
         <div class="cost-marker-label">FlexiPay today · ${cost.flexipay_effective_take}%</div>
         <div class="cost-marker-sub">Median LatAm orchestration</div>
-      </div>
-      <div class="cost-marker dlocal" style="left: ${Math.max(0, pct(cost.dlocal_proposed))}%;">
-        <div class="cost-marker-dot"></div>
-        <div class="cost-marker-label" style="top: -42px;">dLocal · ${cost.dlocal_proposed}%</div>
-        <div class="cost-marker-sub" style="top: -60px;">Bottom of market · single-acquirer territory</div>
       </div>
     </div>
     <div class="cost-scale">

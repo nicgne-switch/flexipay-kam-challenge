@@ -2390,7 +2390,7 @@ canvas { max-height: 300px; }
 /* Cost benchmark */
 .cost-benchmark {
   position: relative;
-  padding: 40px 24px 50px 24px;
+  padding: 80px 24px 60px 24px;
   background: var(--bg-subtle);
   border-radius: 10px;
 }
@@ -2399,47 +2399,68 @@ canvas { max-height: 300px; }
   height: 8px;
   background: linear-gradient(to right, var(--blue-100) 0%, var(--blue) 50%, var(--blue-700) 100%);
   border-radius: 4px;
-  margin: 0 40px;
+  margin: 0 60px;
 }
 .cost-marker {
   position: absolute;
-  top: -18px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .cost-marker-dot {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 3px solid #FFFFFF;
   box-shadow: 0 2px 6px rgba(40, 42, 48, 0.2);
+  position: relative;
+  top: -4px;
 }
 .cost-marker.flexipay .cost-marker-dot { background: var(--blue); }
 .cost-marker.dlocal .cost-marker-dot { background: var(--navy); }
+.cost-marker.flexipay {
+  top: -4px;
+}
+.cost-marker.dlocal {
+  top: -4px;
+}
 .cost-marker-label {
-  position: absolute;
-  top: 24px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
   color: var(--navy);
 }
 .cost-marker-sub {
-  position: absolute;
-  top: 40px;
   font-size: 10px;
   color: var(--text-mute);
   white-space: nowrap;
+  margin-top: 1px;
+}
+/* dLocal label goes ABOVE the bar, FlexiPay goes BELOW */
+.cost-marker.dlocal .cost-marker-label,
+.cost-marker.dlocal .cost-marker-sub {
+  position: absolute;
+  bottom: 100%;
+}
+.cost-marker.dlocal .cost-marker-label {
+  bottom: calc(100% + 8px);
+}
+.cost-marker.dlocal .cost-marker-sub {
+  bottom: calc(100% + 24px);
+}
+.cost-marker.flexipay .cost-marker-label {
+  position: absolute;
+  top: calc(100% + 8px);
+}
+.cost-marker.flexipay .cost-marker-sub {
+  position: absolute;
+  top: calc(100% + 24px);
 }
 .cost-scale {
-  position: absolute;
   display: flex;
   justify-content: space-between;
-  left: 40px;
-  right: 40px;
-  top: 34px;
+  margin: 28px 60px 0 60px;
   font-size: 10px;
   color: var(--text-mute);
   font-family: 'JetBrains Mono', monospace;
