@@ -275,25 +275,41 @@ function initQBREnrichments() {
 
   // Cost benchmark visual
   const cost = q.cost_efficiency;
-  const [min, max] = cost.benchmark_range;
-  const pct = v => ((v - min) / (max - min)) * 100;
+  const maxRate = 0.95;
+  const barPct = v => (v / maxRate) * 100;
   document.getElementById('costBenchmark').innerHTML = `
-    <div class="cost-range">
-      <div class="cost-marker dlocal" style="left: ${Math.max(0, pct(cost.dlocal_proposed))}%;">
-        <div class="cost-marker-sub">Bottom of market · single-acquirer</div>
-        <div class="cost-marker-label">dLocal · ${cost.dlocal_proposed}%</div>
-        <div class="cost-marker-dot"></div>
+    <div class="cost-bar-row">
+      <div class="cost-bar-label">
+        <div class="cost-bar-vendor">dLocal proposal</div>
+        <div class="cost-bar-sub">Bottom of market · single-acquirer</div>
       </div>
-      <div class="cost-marker flexipay" style="left: ${pct(cost.flexipay_effective_take)}%;">
-        <div class="cost-marker-dot"></div>
-        <div class="cost-marker-label">FlexiPay today · ${cost.flexipay_effective_take}%</div>
-        <div class="cost-marker-sub">Median LatAm orchestration</div>
+      <div class="cost-bar-track">
+        <div class="cost-bar-fill dlocal" style="width: ${barPct(cost.dlocal_proposed)}%;"></div>
       </div>
+      <div class="cost-bar-value">${cost.dlocal_proposed}%</div>
     </div>
-    <div class="cost-scale">
-      <span>${min}% (floor)</span>
-      <span>0.82% (median)</span>
-      <span>${max}% (ceiling)</span>
+    <div class="cost-bar-row">
+      <div class="cost-bar-label">
+        <div class="cost-bar-vendor">LatAm benchmark median</div>
+        <div class="cost-bar-sub">Orchestration market average</div>
+      </div>
+      <div class="cost-bar-track">
+        <div class="cost-bar-fill benchmark" style="width: ${barPct(cost.benchmark_median)}%;"></div>
+      </div>
+      <div class="cost-bar-value">${cost.benchmark_median}%</div>
+    </div>
+    <div class="cost-bar-row">
+      <div class="cost-bar-label">
+        <div class="cost-bar-vendor">FlexiPay × Yuno today</div>
+        <div class="cost-bar-sub">Median LatAm orchestration</div>
+      </div>
+      <div class="cost-bar-track">
+        <div class="cost-bar-fill flexipay" style="width: ${barPct(cost.flexipay_effective_take)}%;"></div>
+      </div>
+      <div class="cost-bar-value flexipay">${cost.flexipay_effective_take}%</div>
+    </div>
+    <div class="cost-bar-note">
+      Range: ${cost.benchmark_range[0]}% (floor) — ${cost.benchmark_range[1]}% (ceiling) · dLocal is at the bottom, not the middle
     </div>
   `;
 }
