@@ -228,6 +228,286 @@
     font-weight: 600; text-transform: uppercase;
   }
 
+  /* ---- Enhanced Illustrated Flow (infographic) ---- */
+  .payflow-wrapper { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .payflow-subheading {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .payflow-wrapper h3 {
+    font-size: clamp(22px, 3vw, 30px);
+    margin: 0 0 12px 0;
+  }
+  .payflow-wrapper .payflow-intro {
+    font-size: 16px; line-height: 1.55;
+    color: var(--navy-soft);
+    max-width: 740px; margin: 0 0 28px 0;
+  }
+  .payflow-story {
+    background: linear-gradient(135deg, var(--primary-soft), rgba(16, 185, 129, 0.06));
+    border: 1px solid rgba(0, 102, 204, 0.18);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 22px 28px;
+    margin-bottom: 22px;
+  }
+  .payflow-story-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .payflow-story-text {
+    font-size: 17px; line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+  .payflow-story-text strong { color: var(--primary-dark); }
+
+  .payflow-controls {
+    display: flex; gap: 12px; align-items: center;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .payflow-timer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--dim);
+    margin-left: auto;
+    background: var(--bg-subtle);
+    padding: 8px 14px; border-radius: 6px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .payflow-canvas {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    gap: 4px;
+    padding: 48px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    min-height: 220px;
+  }
+  .payflow-node {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    width: 112px;
+    padding: 18px 8px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
+  }
+  .payflow-node:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+  }
+  .payflow-node.visited {
+    border-color: var(--primary-light);
+    background: var(--primary-softer);
+  }
+  .payflow-node.active {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary-soft), rgba(16, 185, 129, 0.05));
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 16px 36px rgba(0, 102, 204, 0.28);
+    z-index: 3;
+  }
+  .payflow-node.active::before {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    border-radius: 18px;
+    border: 2px solid var(--primary);
+    opacity: 0.5;
+    animation: payflowRing 1.1s ease-out infinite;
+    pointer-events: none;
+  }
+  @keyframes payflowRing {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.28); opacity: 0; }
+  }
+  .payflow-icon-wrap {
+    width: 54px; height: 54px;
+    background: var(--primary-soft);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    transition: all 0.35s;
+  }
+  .payflow-node.active .payflow-icon-wrap {
+    background: var(--primary);
+    animation: payflowBounce 0.6s;
+  }
+  .payflow-node.visited .payflow-icon-wrap {
+    background: rgba(0, 102, 204, 0.15);
+  }
+  @keyframes payflowBounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px) scale(1.05); }
+  }
+  .payflow-icon {
+    width: 28px; height: 28px;
+    color: var(--primary);
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: color 0.3s;
+  }
+  .payflow-node.active .payflow-icon { color: white; }
+  .payflow-node-name {
+    font-size: 13px; font-weight: 700;
+    color: var(--navy); line-height: 1.2;
+  }
+  .payflow-node-role {
+    font-size: 10.5px; color: var(--dim);
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.02em;
+  }
+  .payflow-connector {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 3px;
+    color: var(--border-strong);
+    transition: all 0.3s;
+    width: 22px;
+  }
+  .payflow-connector-line {
+    width: 18px; height: 2px;
+    background: var(--border-strong);
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .payflow-connector-arrow {
+    font-size: 11px; line-height: 1;
+    color: inherit;
+    margin-top: -2px;
+  }
+  .payflow-connector.active { color: var(--primary); }
+  .payflow-connector.active .payflow-connector-line { background: var(--primary); }
+  .payflow-connector.active .payflow-connector-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+    animation: payflowPulse 0.7s ease-out;
+  }
+  @keyframes payflowPulse {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+  .payflow-connector.visited { color: var(--primary-light); }
+  .payflow-connector.visited .payflow-connector-line { background: var(--primary-light); }
+
+  .payflow-detail {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-top: 24px;
+    min-height: 240px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .payflow-detail-placeholder {
+    font-size: 15px;
+    color: var(--dim);
+    text-align: center;
+    padding: 60px 20px;
+    line-height: 1.65;
+  }
+  .payflow-detail-placeholder strong { color: var(--navy); }
+  .payflow-detail-step-label {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .payflow-detail-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+  }
+  .payflow-detail-role {
+    color: var(--dim);
+    font-size: 14px;
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .payflow-detail-action {
+    font-size: 16px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .payflow-detail-explanation {
+    font-size: 14px;
+    color: var(--navy-soft);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .payflow-example {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--navy-soft);
+    line-height: 1.55;
+  }
+  .payflow-example strong { color: var(--primary-dark); }
+  .payflow-example-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .payflow-time-stamp {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--dim);
+    background: var(--bg);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+  }
+  @media (max-width: 600px) {
+    .payflow-node { width: 88px; padding: 14px 6px; }
+    .payflow-icon-wrap { width: 44px; height: 44px; }
+    .payflow-icon { width: 22px; height: 22px; }
+    .payflow-node-name { font-size: 11.5px; }
+    .payflow-node-role { font-size: 10px; }
+    .payflow-connector { width: 12px; }
+    .payflow-connector-line { width: 10px; }
+    .payflow-time-stamp { position: static; display: inline-block; margin-bottom: 12px; }
+    .payflow-detail { padding: 22px 20px; }
+  }
+
   /* ---- Actor Cards ---- */
   .actors-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -821,6 +1101,169 @@
     <div class="insight-box" style="margin-top: 32px;">
       <div class="label">Insight clave</div>
       <p>La <strong>autorización pasa en tiempo real</strong>, pero el dinero <strong>se mueve días después</strong> (settlement T+1 a T+3 domestic, T+5 a T+7 cross-border). Entre la autorización y el settlement viven los chargebacks, los fraudes y la reconciliación — ahí es donde un orquestador realmente gana.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ENHANCED ILLUSTRATED FLOWCHART (infographic, with Juan story) -->
+    <!-- ============================================================ -->
+    <div class="payflow-wrapper">
+      <div class="payflow-subheading">🎬 Flowchart ilustrado</div>
+      <h3>Ahora con un ejemplo real, paso a paso</h3>
+      <p class="payflow-intro">
+        El mismo flujo pero como <strong>infografía animada</strong>, siguiendo una transacción real
+        de principio a fin. Cada actor tiene su icono y su momento de actuar. Tocá
+        <strong>▶ Reproducir</strong> para ver cómo viaja la transacción en tiempo real, o cliqueá
+        cualquier actor para ver qué hace y un ejemplo concreto.
+      </p>
+
+      <div class="payflow-story">
+        <div class="payflow-story-label">Nuestro ejemplo</div>
+        <p class="payflow-story-text">
+          <strong>Juan</strong> quiere comprar unas zapatillas de <strong>$150.000 COP</strong>
+          en <strong>Falabella</strong> usando su <strong>Visa de Bancolombia</strong>.
+          Veamos exactamente qué pasa en los próximos 2 segundos.
+        </p>
+      </div>
+
+      <div class="payflow-controls">
+        <button class="btn" id="payflowPlay">▶ Reproducir transacción</button>
+        <button class="btn secondary" id="payflowReset">↺ Reset</button>
+        <div class="payflow-timer" id="payflowTimer">0.0s</div>
+      </div>
+
+      <div class="payflow-canvas" id="payflowCanvas">
+        <!-- Node 1: Consumer -->
+        <div class="payflow-node" data-step="1">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Consumidor</div>
+          <div class="payflow-node-role">Juan</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="1-2">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 2: Merchant -->
+        <div class="payflow-node" data-step="2">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <path d="M3 9l1.5-5h15L21 9"/>
+              <path d="M5 9v11h14V9"/>
+              <path d="M3 9h18"/>
+              <path d="M10 14h4v6h-4z"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Merchant</div>
+          <div class="payflow-node-role">Falabella</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="2-3">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 3: Gateway/Orchestrator (Yuno) -->
+        <div class="payflow-node" data-step="3">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <path d="M16 3l4 4-4 4"/>
+              <path d="M4 7h5l5 10h6"/>
+              <path d="M16 21l4-4-4-4"/>
+              <path d="M4 17h5"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Orquestador</div>
+          <div class="payflow-node-role">Yuno</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="3-4">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 4: Acquirer -->
+        <div class="payflow-node" data-step="4">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <path d="M12 3l10 6H2z"/>
+              <path d="M5 9v10"/>
+              <path d="M19 9v10"/>
+              <path d="M10 9v10"/>
+              <path d="M14 9v10"/>
+              <path d="M2 19h20"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Acquirer</div>
+          <div class="payflow-node-role">Credibanco</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="4-5">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 5: Card Network -->
+        <div class="payflow-node" data-step="5">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/>
+              <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Network</div>
+          <div class="payflow-node-role">Visa</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="5-6">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 6: Issuer -->
+        <div class="payflow-node" data-step="6">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <path d="M2 10h20"/>
+              <path d="M6 15h4"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Issuer</div>
+          <div class="payflow-node-role">Bancolombia</div>
+        </div>
+
+        <div class="payflow-connector" data-connector="6-7">
+          <div class="payflow-connector-line"></div>
+          <span class="payflow-connector-arrow">▸</span>
+        </div>
+
+        <!-- Node 7: Approval response -->
+        <div class="payflow-node" data-step="7">
+          <div class="payflow-icon-wrap">
+            <svg class="payflow-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12l3 3 5-6"/>
+            </svg>
+          </div>
+          <div class="payflow-node-name">Aprobada</div>
+          <div class="payflow-node-role">✓ Respuesta</div>
+        </div>
+      </div>
+
+      <div class="payflow-detail" id="payflowDetail">
+        <div class="payflow-detail-placeholder">
+          Tocá <strong>▶ Reproducir transacción</strong> para ver la animación completa,<br>
+          o cliqueá cualquier actor del flowchart para ver qué hace y un ejemplo concreto.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1631,6 +2074,145 @@ function showMdr(key) {
 let currentFilter = 'all';
 let currentSearch = '';
 
+/* ===== ENHANCED FLOWCHART (Juan buying at Falabella story) ===== */
+const PAYFLOW_STEPS = [
+  {
+    step: 1,
+    title: 'Consumidor',
+    role: 'Juan · Cliente de Bancolombia',
+    action: 'Juan ingresa los datos de su tarjeta y toca "Pagar"',
+    explanation: 'El consumidor inicia la transacción. Aquí empieza todo. Sin consumidor, no hay pago. Si el issuer lo pide, Juan autentica con 3DS (SMS/OTP).',
+    example: 'Juan introduce su Visa <strong>4532-****-****-1234</strong>, el CVV y la fecha de vencimiento en el checkout de Falabella.com. Hace click en "Pagar".',
+    time: '0.0s'
+  },
+  {
+    step: 2,
+    title: 'Merchant',
+    role: 'Falabella · El comercio',
+    action: 'Falabella recibe los datos y los manda cifrados al gateway',
+    explanation: 'El merchant nunca guarda los datos de tarjeta directamente (por compliance PCI DSS). Los envía al gateway en menos de 100ms para procesar.',
+    example: 'Falabella hace un <strong>POST</strong> a la API de Yuno con los datos encriptados y el monto <strong>$150.000 COP</strong>. Ni un byte del número de tarjeta queda en sus servidores.',
+    time: '0.2s'
+  },
+  {
+    step: 3,
+    title: 'Gateway + Orquestador',
+    role: 'Yuno · Capa de orquestación',
+    action: 'Yuno tokeniza, analiza y elige el mejor acquirer para esta transacción',
+    explanation: 'Aquí vive la inteligencia. Yuno ve el BIN de la tarjeta (Bancolombia), mira su histórico de approval rates por acquirer, y decide rutear por el óptimo — en tiempo real.',
+    example: 'Yuno detecta <strong>BIN 453212 = Bancolombia</strong>. Por data histórica: <strong>Credibanco tiene +4pt de approval vs Redeban</strong> para este issuer específico. Rutea por Credibanco.',
+    time: '0.4s'
+  },
+  {
+    step: 4,
+    title: 'Acquirer / PSP',
+    role: 'Credibanco · Procesador colombiano',
+    action: 'Credibanco recibe la transacción y la manda al card network',
+    explanation: 'El acquirer tiene la licencia regulatoria para mover dinero. Formatea el request en el protocolo estándar (ISO 8583) y lo envía al rail de Visa.',
+    example: 'Credibanco arma un mensaje <strong>ISO 8583</strong> con los datos del merchant (Falabella, MCC 5651), el monto ($150.000), y el token de tarjeta. Lo manda a Visa Colombia.',
+    time: '0.7s'
+  },
+  {
+    step: 5,
+    title: 'Card Network',
+    role: 'Visa · Infraestructura de rail',
+    action: 'Visa identifica al issuer y le rutea la request',
+    explanation: 'El network funciona como la infraestructura de telecom de los pagos. Identifica qué banco emitió la tarjeta usando el BIN, y rutea la request a los servidores de ese banco.',
+    example: 'Visa ve <strong>BIN 453212 → Bancolombia Colombia</strong>, y envía la authorization request a los servidores de Bancolombia en Medellín en ~100ms.',
+    time: '1.0s'
+  },
+  {
+    step: 6,
+    title: 'Issuer Bank',
+    role: 'Bancolombia · Banco emisor de Juan',
+    action: 'Bancolombia valida fondos, fraude, y decide aprobar o rechazar',
+    explanation: 'El issuer ejecuta 3 validaciones en paralelo: ¿Tiene fondos o línea de crédito disponible? ¿Hay un patrón de fraude? ¿Está dentro del límite? Responde en milisegundos.',
+    example: 'Bancolombia chequea: Juan tiene <strong>$800.000 disponibles ✓</strong>, patrón de compra normal ✓, tarjeta no bloqueada ✓. Responde <strong>APROBADO</strong>.',
+    time: '1.3s'
+  },
+  {
+    step: 7,
+    title: 'Respuesta final',
+    role: 'De vuelta al merchant y consumidor',
+    action: 'La approval viaja de regreso por toda la cadena en <500ms',
+    explanation: 'Bancolombia → Visa → Credibanco → Yuno → Falabella → Juan. Hold en la tarjeta. Webhook al merchant. UI actualizada. Todo en menos de medio segundo más.',
+    example: 'Juan ve <strong>"¡Compra confirmada! ✓"</strong> en la pantalla de Falabella. Los $150.000 quedan en hold en su tarjeta. El dinero real se moverá en <strong>T+2 (settlement)</strong>.',
+    time: '1.8s'
+  }
+];
+
+let payflowTimerId = null;
+
+function payflowRenderDetail(s) {
+  const d = document.getElementById('payflowDetail');
+  if (!d) return;
+  d.innerHTML = `
+    <div class="payflow-time-stamp">🕒 ${s.time}</div>
+    <div class="payflow-detail-step-label">Paso ${s.step} / 7</div>
+    <h3 class="payflow-detail-title">${s.title}</h3>
+    <div class="payflow-detail-role">${s.role}</div>
+    <div class="payflow-detail-action">${s.action}</div>
+    <div class="payflow-detail-explanation">${s.explanation}</div>
+    <div class="payflow-example">
+      <span class="payflow-example-label">📍 En esta transacción</span>
+      ${s.example}
+    </div>
+  `;
+}
+
+function payflowReset() {
+  if (payflowTimerId) { clearTimeout(payflowTimerId); payflowTimerId = null; }
+  document.querySelectorAll('.payflow-node').forEach(n => n.classList.remove('active', 'visited'));
+  document.querySelectorAll('.payflow-connector').forEach(c => c.classList.remove('active', 'visited'));
+  const timer = document.getElementById('payflowTimer');
+  if (timer) timer.textContent = '0.0s';
+  const detail = document.getElementById('payflowDetail');
+  if (detail) {
+    detail.innerHTML = `
+      <div class="payflow-detail-placeholder">
+        Tocá <strong>▶ Reproducir transacción</strong> para ver la animación completa,<br>
+        o cliqueá cualquier actor del flowchart para ver qué hace y un ejemplo concreto.
+      </div>`;
+  }
+}
+
+function payflowPlay() {
+  payflowReset();
+  let i = 0;
+  const interval = 560;
+  const timerEl = document.getElementById('payflowTimer');
+
+  function next() {
+    if (i >= PAYFLOW_STEPS.length) {
+      if (timerEl) timerEl.textContent = '2.0s · ✓ Aprobada';
+      return;
+    }
+    const s = PAYFLOW_STEPS[i];
+
+    // Previous node becomes visited; previous connector becomes visited
+    if (i > 0) {
+      const prev = document.querySelector('.payflow-node[data-step="' + PAYFLOW_STEPS[i-1].step + '"]');
+      if (prev) { prev.classList.remove('active'); prev.classList.add('visited'); }
+      const conn = document.querySelector('.payflow-connector[data-connector="' + PAYFLOW_STEPS[i-1].step + '-' + s.step + '"]');
+      if (conn) conn.classList.add('active');
+      for (let j = 0; j < i - 1; j++) {
+        const c = document.querySelector('.payflow-connector[data-connector="' + PAYFLOW_STEPS[j].step + '-' + PAYFLOW_STEPS[j+1].step + '"]');
+        if (c) { c.classList.remove('active'); c.classList.add('visited'); }
+      }
+    }
+
+    const node = document.querySelector('.payflow-node[data-step="' + s.step + '"]');
+    if (node) node.classList.add('active');
+
+    payflowRenderDetail(s);
+    if (timerEl) timerEl.textContent = s.time;
+
+    i++;
+    payflowTimerId = setTimeout(next, interval);
+  }
+  next();
+}
+
 /* ===== INIT ===== */
 document.addEventListener('DOMContentLoaded', () => {
   // Render everything
@@ -1639,15 +2221,37 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCountries();
   renderGlossary();
 
-  // Flow buttons
+  // Flow buttons (original card flow)
   document.getElementById('playFlow').addEventListener('click', playFlow);
   document.getElementById('resetFlow').addEventListener('click', resetFlow);
 
-  // Flow step click
+  // Flow step click (original cards)
   document.querySelectorAll('.flow-step').forEach(step => {
     step.addEventListener('click', () => {
       resetFlow();
       step.classList.add('active');
+    });
+  });
+
+  // Enhanced flowchart (illustrated with Juan story)
+  const payflowPlayBtn = document.getElementById('payflowPlay');
+  const payflowResetBtn = document.getElementById('payflowReset');
+  if (payflowPlayBtn) payflowPlayBtn.addEventListener('click', payflowPlay);
+  if (payflowResetBtn) payflowResetBtn.addEventListener('click', payflowReset);
+
+  // Click any node to jump to that step
+  document.querySelectorAll('.payflow-node').forEach(node => {
+    node.addEventListener('click', () => {
+      if (payflowTimerId) { clearTimeout(payflowTimerId); payflowTimerId = null; }
+      document.querySelectorAll('.payflow-node').forEach(n => n.classList.remove('active'));
+      node.classList.add('active');
+      const stepNum = parseInt(node.dataset.step);
+      const step = PAYFLOW_STEPS.find(s => s.step === stepNum);
+      if (step) {
+        payflowRenderDetail(step);
+        const t = document.getElementById('payflowTimer');
+        if (t) t.textContent = step.time;
+      }
     });
   });
 
